@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BasketballGUI.MainPage"
+             x:Class="BasketballGUI.LiveEnterStats"
              Title="Enter Scores">
 
+    
+    <!--Beginning of the Grid-->
+    
     <Grid ColumnSpacing="10" RowSpacing="10">        
         <Grid.RowDefinitions>
+            
+            <!--Each creates a row with auto sizing or a height if specified-->
             <RowDefinition Height="70"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="100"/>
@@ -14,6 +19,8 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+        
+        <!--Each created a column with auto sizing or a width if specified-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -24,6 +31,8 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+        <!--Each container needs the column or row specified 
+        (not specified is defaulted to 0)-->
         <Label Grid.ColumnSpan="3"
                 Text="Away Team"               
                FontSize="50"
