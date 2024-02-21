@@ -428,30 +428,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ian of Drake\\.nuget\\packages\\": {},
-    "D:\\Visual Studio Shared Tools, SDKs, etc\\NuGetPackages": {}
+    "C:\\Users\\aust0\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\Lab_The-Gob-Tracker\\API Gob Tracker\\API Gob Tracker.csproj",
+      "projectUniqueName": "C:\\Users\\aust0\\Desktop\\Lab_The-Gob-Tracker\\API Gob Tracker\\API Gob Tracker.csproj",
       "projectName": "API Gob Tracker",
-      "projectPath": "D:\\Github\\Lab_The-Gob-Tracker\\API Gob Tracker\\API Gob Tracker.csproj",
-      "packagesPath": "C:\\Users\\Ian of Drake\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\Lab_The-Gob-Tracker\\API Gob Tracker\\obj\\",
+      "projectPath": "C:\\Users\\aust0\\Desktop\\Lab_The-Gob-Tracker\\API Gob Tracker\\API Gob Tracker.csproj",
+      "packagesPath": "C:\\Users\\aust0\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aust0\\Desktop\\Lab_The-Gob-Tracker\\API Gob Tracker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Visual Studio Shared Tools, SDKs, etc\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ian of Drake\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "D:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
+        "C:\\Users\\aust0\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.4.23260.5\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -464,6 +466,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -494,7 +501,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.4.23260.5\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

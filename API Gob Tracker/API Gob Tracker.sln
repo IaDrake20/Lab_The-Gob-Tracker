@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API Gob Tracker", "API Gob Tracker.csproj", "{A12FF062-89C7-45D3-96D4-2C2CB5058321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API Gob Tracker", "API Gob Tracker.csproj", "{A12FF062-89C7-45D3-96D4-2C2CB5058321}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketballGUI", "..\BasketballGUI\BasketballGUI.csproj", "{053D2EDA-C5AF-4EC8-89C1-33D320D9FFDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{A12FF062-89C7-45D3-96D4-2C2CB5058321}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A12FF062-89C7-45D3-96D4-2C2CB5058321}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A12FF062-89C7-45D3-96D4-2C2CB5058321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053D2EDA-C5AF-4EC8-89C1-33D320D9FFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053D2EDA-C5AF-4EC8-89C1-33D320D9FFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053D2EDA-C5AF-4EC8-89C1-33D320D9FFDF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{053D2EDA-C5AF-4EC8-89C1-33D320D9FFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053D2EDA-C5AF-4EC8-89C1-33D320D9FFDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053D2EDA-C5AF-4EC8-89C1-33D320D9FFDF}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
