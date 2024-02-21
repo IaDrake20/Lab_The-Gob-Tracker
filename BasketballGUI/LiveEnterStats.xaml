@@ -12,12 +12,11 @@
             
             <!--Each creates a row with auto sizing or a height if specified-->
             <RowDefinition Height="70"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition/>
             <RowDefinition Height="100"/>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height=" 60"/>
         </Grid.RowDefinitions>
         
         <!--Each created a column with auto sizing or a width if specified-->
@@ -52,23 +51,24 @@
 
         <Label Grid.Row="1"
                Grid.Column="1"
-               FontSize="50"
+               FontSize="70"
                Text="25"
                HorizontalOptions="Center"
-               VerticalOptions="Center" />
+               VerticalOptions="Start" />
 
         <Label Grid.Row="1"
                Grid.Column="5"
-               FontSize="50"
+               FontSize="70"
                Text="26"
                HorizontalOptions="Center"
-               VerticalOptions="Center" />
+               VerticalOptions="Start" />
 
         <Picker x:Name="awayPicker"
                 Grid.ColumnSpan="3"
                 Grid.Row="2"
                 FontSize="25"
-                Title="Select a player">
+                Title="Select a player"
+                >
                 <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Austin Oravec</x:String>
@@ -86,21 +86,27 @@
         </Picker>
 
         <Button Grid.Row="3"
-                BackgroundColor="Red"
+                Grid.RowSpan="1"                
+                Grid.ColumnSpan="2"
+                BackgroundColor="Green"
                 FontSize="25"
                 Text="+1"
                 />
 
         <Button Grid.Row="3"
-                Grid.Column="1"
-                BackgroundColor="Red"
+                Grid.Column="2"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="1"
+                BackgroundColor="Green"
                 FontSize="25"
                 Text="+2"
         />
 
         <Button Grid.Row="3"
-                Grid.Column="2"
-                BackgroundColor="Red"
+                Grid.Column="5"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="1"
+                BackgroundColor="Green"
                 FontSize="25"
                 Text="+3"
         />
@@ -120,146 +126,75 @@
                     <x:String>Ian Drake</x:String>
                 </x:Array>
             </Picker.ItemsSource>
-        </Picker>
-
-        <Button Grid.Row="3"
-                Grid.Column="4"
-                BackgroundColor="Blue"
-                FontSize="25"
-                Text="+1"
-        />
-
-        <Button Grid.Row="3"
-                Grid.Column="5"
-                BackgroundColor="Blue"
-                FontSize="25"
-                Text="+2"
-        />
-
-        <Button Grid.Row="3"
-                Grid.Column="6"
-                BackgroundColor="Blue"
-                FontSize="25"
-                Text="+3"
-        />
+        </Picker>      
 
         <Button Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
         BackgroundColor="Red"
         FontSize="25"
         Text="Foul"
         />
 
         <Button Grid.Row="4"
-        Grid.Column="1"
+        Grid.Column="5"
         BackgroundColor="Red"
         FontSize="25"
         Text="Missed 2"
 />
 
         <Button Grid.Row="4"
-        Grid.Column="2"
+        Grid.Column="6"
         BackgroundColor="Red"
         FontSize="25"
         Text="Missed 3"
 />
 
-        <Button Grid.Row="5"
-        BackgroundColor="Red"
+        <Button Grid.Row="4"
+                Grid.Column="2"
+                Grid.ColumnSpan="3"
+        BackgroundColor="Blue"
         FontSize="25"
-        Text="Assist"
+        Text="Undo"
         />
 
         <Button Grid.Row="5"
-        Grid.Column="1"
-        BackgroundColor="Red"
+        Grid.Column="0"
+        BackgroundColor="Silver"
         FontSize="25"
-        Text="Steal"
+        Text="Assist"
 />
 
         <Button Grid.Row="5"
-        Grid.Column="2"
-        BackgroundColor="Red"
+        Grid.Column="1"
+        BackgroundColor="Silver"
         FontSize="25"
-        Text="Block"
+        Text="Steal"
 />
         <Button Grid.Row="6"
-        BackgroundColor="Red"
+                Grid.Column="4"
+        BackgroundColor="Silver"
         FontSize="25"
         Text="Turnover"
         />
 
         <Button Grid.Row="6"
-        Grid.Column="1"
-        BackgroundColor="Red"
-        FontSize="25"
-        Text="OF Reb"
-/>
-
-        <Button Grid.Row="6"
         Grid.Column="2"
-        BackgroundColor="Red"
-        FontSize="25"
-        Text="DF Reb"
+BackgroundColor="Silver"
+FontSize="25"
+Text="Block"
 />
-
-        <Button Grid.Row="4"
-                Grid.Column="4"
-        BackgroundColor="Blue"
-        FontSize="25"
-        Text="Foul"
-        />
-
-        <Button Grid.Row="4"
-        Grid.Column="5"
-        BackgroundColor="Blue"
-        FontSize="25"
-        Text="Missed 2"
-/>
-
-        <Button Grid.Row="4"
-        Grid.Column="6"
-        BackgroundColor="Blue"
-        FontSize="25"
-        Text="Missed 3"
-/>
-
-        <Button Grid.Row="5"
-                Grid.Column="4"
-        BackgroundColor="Blue"
-        FontSize="25"
-        Text="Assist"
-        />
-
-        <Button Grid.Row="5"
-        Grid.Column="5"
-        BackgroundColor="Blue"
-        FontSize="25"
-        Text="Steal"
-/>
-
-        <Button Grid.Row="5"
-        Grid.Column="6"
-        BackgroundColor="Blue"
-        FontSize="25"
-        Text="Block"
-/>
-        <Button Grid.Row="6"
-                Grid.Column="4"
-        BackgroundColor="Blue"
-        FontSize="25"
-        Text="Turnover"
-        />
 
         <Button Grid.Row="6"
         Grid.Column="5"
-        BackgroundColor="Blue"
+        BackgroundColor="Silver"
         FontSize="25"
         Text="OF Reb"
 />
 
         <Button Grid.Row="6"
         Grid.Column="6"
-        BackgroundColor="Blue"
+        BackgroundColor="Silver"
         FontSize="25"
         Text="DF Reb"
                 />
