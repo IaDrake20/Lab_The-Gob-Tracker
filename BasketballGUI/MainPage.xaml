@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BasketballGUI.MainPage">
+             x:Class="BasketballGUI.MainPage"
+             Title="Enter Scores">
 
-    <Grid>
+    <Grid ColumnSpacing="10" RowSpacing="10">        
         <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
@@ -13,67 +18,236 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <BoxView Color="AliceBlue" />
-        <Label Text="Upper left"
-               HorizontalOptions="Start"
-               VerticalOptions="Start" />
+        <Label Grid.ColumnSpan="3"
+                Text="Away Team"               
+               FontSize="50"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+        
+        <!-- In case you want to color a box
         <BoxView Grid.Column="1"
-                 Color="LightSkyBlue" />
-        <Label Grid.Column="1"
-               Text="Upper center"
+                 Color="LightSkyBlue" />-->
+                
+        <Label Grid.Column="4"
+               Grid.ColumnSpan="3"
+               Text="Home Team"
+               FontSize="50"
                HorizontalOptions="Center"
-               VerticalOptions="Start"/>
-        <BoxView Grid.Column="2"
-                 Color="CadetBlue" />
-        <Label Grid.Column="2"
-               Text="Upper right"
-               HorizontalOptions="End"
-               VerticalOptions="Start" />
-        <BoxView Grid.Row="1"
-                 Color="CornflowerBlue" />
-        <Label Grid.Row="1"
-               Text="Center left"
-               HorizontalOptions="Start"
                VerticalOptions="Center" />
-        <BoxView Grid.Row="1"
-                 Grid.Column="1"
-                 Color="DodgerBlue" />
+
         <Label Grid.Row="1"
                Grid.Column="1"
-               Text="Center center"
+               FontSize="50"
+               Text="25"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
-        <BoxView Grid.Row="1"
-                 Grid.Column="2"
-                 Color="DarkSlateBlue" />
+
         <Label Grid.Row="1"
-               Grid.Column="2"
-               Text="Center right"
-               HorizontalOptions="End"
-               VerticalOptions="Center" />
-        <BoxView Grid.Row="2"
-                 Color="SteelBlue" />
-        <Label Grid.Row="2"
-               Text="Lower left"
-               HorizontalOptions="Start"
-               VerticalOptions="End" />
-        <BoxView Grid.Row="2"
-                 Grid.Column="1"
-                 Color="LightBlue" />
-        <Label Grid.Row="2"
-               Grid.Column="1"
-               Text="Lower center"
+               Grid.Column="5"
+               FontSize="50"
+               Text="26"
                HorizontalOptions="Center"
-               VerticalOptions="End" />
-        <BoxView Grid.Row="2"
-                 Grid.Column="2"
-                 Color="BlueViolet" />
-        <Label Grid.Row="2"
-               Grid.Column="2"
-               Text="Lower right"
-               HorizontalOptions="End"
-               VerticalOptions="End" />
-    </Grid>
+               VerticalOptions="Center" />
+
+        <Picker x:Name="awayPicker"
+                Grid.ColumnSpan="3"
+                Grid.Row="2"
+                FontSize="25"
+                Title="Select a player">
+                <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Austin Oravec</x:String>
+                    <x:String>Sean Jackson</x:String>
+                    <x:String>Cody Marshall</x:String>
+                    <x:String>Mike Scarpelli</x:String>
+                    <x:String>Ian Drake</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Button Grid.Row="3"
+                BackgroundColor="Red"
+                FontSize="25"
+                Text="+1"
+                />
+
+        <Button Grid.Row="3"
+                Grid.Column="1"
+                BackgroundColor="Red"
+                FontSize="25"
+                Text="+2"
+        />
+
+        <Button Grid.Row="3"
+                Grid.Column="2"
+                BackgroundColor="Red"
+                FontSize="25"
+                Text="+3"
+        />
+
+        <Picker x:Name="homePicker"
+                Grid.Column="4"
+                Grid.ColumnSpan="3"
+                Grid.Row="2"
+                FontSize="25"
+                Title="Select a player">
+                <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Austin Oravec</x:String>
+                    <x:String>Sean Jackson</x:String>
+                    <x:String>Cody Marshall</x:String>
+                    <x:String>Mike Scarpelli</x:String>
+                    <x:String>Ian Drake</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Button Grid.Row="3"
+                Grid.Column="4"
+                BackgroundColor="Blue"
+                FontSize="25"
+                Text="+1"
+        />
+
+        <Button Grid.Row="3"
+                Grid.Column="5"
+                BackgroundColor="Blue"
+                FontSize="25"
+                Text="+2"
+        />
+
+        <Button Grid.Row="3"
+                Grid.Column="6"
+                BackgroundColor="Blue"
+                FontSize="25"
+                Text="+3"
+        />
+
+        <Button Grid.Row="4"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="Foul"
+        />
+
+        <Button Grid.Row="4"
+        Grid.Column="1"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="Missed 2"
+/>
+
+        <Button Grid.Row="4"
+        Grid.Column="2"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="Missed 3"
+/>
+
+        <Button Grid.Row="5"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="Assist"
+        />
+
+        <Button Grid.Row="5"
+        Grid.Column="1"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="Steal"
+/>
+
+        <Button Grid.Row="5"
+        Grid.Column="2"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="Block"
+/>
+        <Button Grid.Row="6"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="Turnover"
+        />
+
+        <Button Grid.Row="6"
+        Grid.Column="1"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="OF Reb"
+/>
+
+        <Button Grid.Row="6"
+        Grid.Column="2"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="DF Reb"
+/>
+
+        <Button Grid.Row="4"
+                Grid.Column="4"
+        BackgroundColor="Blue"
+        FontSize="25"
+        Text="Foul"
+        />
+
+        <Button Grid.Row="4"
+        Grid.Column="5"
+        BackgroundColor="Blue"
+        FontSize="25"
+        Text="Missed 2"
+/>
+
+        <Button Grid.Row="4"
+        Grid.Column="6"
+        BackgroundColor="Blue"
+        FontSize="25"
+        Text="Missed 3"
+/>
+
+        <Button Grid.Row="5"
+                Grid.Column="4"
+        BackgroundColor="Blue"
+        FontSize="25"
+        Text="Assist"
+        />
+
+        <Button Grid.Row="5"
+        Grid.Column="5"
+        BackgroundColor="Blue"
+        FontSize="25"
+        Text="Steal"
+/>
+
+        <Button Grid.Row="5"
+        Grid.Column="6"
+        BackgroundColor="Blue"
+        FontSize="25"
+        Text="Block"
+/>
+        <Button Grid.Row="6"
+                Grid.Column="4"
+        BackgroundColor="Blue"
+        FontSize="25"
+        Text="Turnover"
+        />
+
+        <Button Grid.Row="6"
+        Grid.Column="5"
+        BackgroundColor="Blue"
+        FontSize="25"
+        Text="OF Reb"
+/>
+
+        <Button Grid.Row="6"
+        Grid.Column="6"
+        BackgroundColor="Blue"
+        FontSize="25"
+        Text="DF Reb"
+                />
+    </Grid>    
 </ContentPage>
