@@ -76,6 +76,11 @@
                     <x:String>Cody Marshall</x:String>
                     <x:String>Mike Scarpelli</x:String>
                     <x:String>Ian Drake</x:String>
+                    <x:String>Austin Oravec</x:String>
+                    <x:String>Sean Jackson</x:String>
+                    <x:String>Cody Marshall</x:String>
+                    <x:String>Mike Scarpelli</x:String>
+                    <x:String>Ian Drake</x:String>
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>

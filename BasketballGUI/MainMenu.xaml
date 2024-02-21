@@ -43,11 +43,13 @@
         />
 
         <Button Text="Quit"
- Grid.Column="2"
-         Grid.Row="2"
- FontSize="Large"
- CornerRadius="70"
- />
+                x:Name="btnQuit"
+                Clicked="btnQuit_Clicked"
+                Grid.Column="2"
+                Grid.Row="2"
+                FontSize="Large"
+                CornerRadius="70"
+                />
 
     </Grid>
 </ContentPage>

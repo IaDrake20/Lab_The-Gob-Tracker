@@ -6,4 +6,9 @@ public partial class MainMenu : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void btnQuit_Clicked(object sender, EventArgs e)
+    {
+        Application.Current.Quit();
+    }
 }
