@@ -407,3 +407,8 @@ FodyWeavers.xsd
 *.sln.iml
 API Gob Tracker/.vs/API Gob Tracker/v17/.suo
 API Gob Tracker/.vs/API Gob Tracker/v17/.suo
+API Gob Tracker/.editorconfig
+API Gob Tracker/.vs/API Gob Tracker/v17/.suo
+API Gob Tracker/obj/Debug/net8.0/API Gob Tracker.AssemblyInfo.cs
+API Gob Tracker/obj/Debug/net8.0/API Gob Tracker.AssemblyInfoInputs.cache
+BasketballGUI/BasketballGUI.csproj
