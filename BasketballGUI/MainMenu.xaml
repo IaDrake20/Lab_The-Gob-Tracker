@@ -30,12 +30,16 @@
 
         
         <Button Text="Teams"
+                x:Name="btnTeams"
+                Clicked="btnTeams_Clicked"
                 Grid.Column="2"
                 FontSize="Large"
                 CornerRadius="70"
                 />
 
         <Button Text="New Game"
+                x:Name="btnNewGame"
+                Clicked="btnNewGame_Clicked"
         Grid.Column="2"
                 Grid.Row="1"
         FontSize="Large"
