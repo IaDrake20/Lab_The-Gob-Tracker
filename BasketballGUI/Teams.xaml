@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BasketballGUI.Teams"
+             Title="Teams">
+        <Grid RowSpacing="20">
+            <Grid.RowDefinitions>
+
+                <!--Each creates a row with auto sizing or a height if specified-->
+                <RowDefinition Height="75"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition Width="75"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text ="Select Team"
+                   FontSize="40"                   
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+            Grid.Column="1"
+                />
+
+
+            <Frame CornerRadius="30" Grid.Row="1" BackgroundColor="Gray">
+
+                <Label Text ="Team 1"
+                   FontSize="25"
+                   VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                   />
+            </Frame>
+
+            <Frame CornerRadius="30" Grid.Row="2" BackgroundColor="Gray">
+
+                <Label Text ="Team 2"
+           FontSize="25"
+           VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+           />
+            </Frame>
+
+            <Frame CornerRadius="30" Grid.Row="3" BackgroundColor="Gray">
+
+                <Label Text ="Team 3"
+           FontSize="25"
+           VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+           />
+            </Frame>
+
+            <Frame CornerRadius="30" Grid.Row="4" BackgroundColor="Gray">
+
+                <Label Text ="Team 4"
+                FontSize="25"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+/>
+            </Frame>
+
+            <Frame CornerRadius="30" Grid.Column="2" BackgroundColor="Blue">
+
+                <Label Text ="+"
+            FontSize="25"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+    />
+            </Frame>
+        </Grid>
+</ContentPage>

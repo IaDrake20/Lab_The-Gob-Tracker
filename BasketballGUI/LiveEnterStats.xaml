@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BasketballGUI.LiveEnterStats"
+             Title="Enter Scores">
+
+    
+    <!--Beginning of the Grid-->
+    
+    <Grid ColumnSpacing="10" RowSpacing="10">        
+        <Grid.RowDefinitions>
+            
+            <!--Each creates a row with auto sizing or a height if specified-->
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height=" 60"/>
+        </Grid.RowDefinitions>
+        
+        <!--Each created a column with auto sizing or a width if specified-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <!--Each container needs the column or row specified 
+        (not specified is defaulted to 0)-->
+        <Label Grid.ColumnSpan="3"
+                Text="Away Team"               
+               FontSize="50"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+        
+        <!-- In case you want to color a box
+        <BoxView Grid.Column="1"
+                 Color="LightSkyBlue" />-->
+                
+        <Label Grid.Column="4"
+               Grid.ColumnSpan="3"
+               Text="Home Team"
+               FontSize="50"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+        <Label Grid.Row="1"
+               Grid.Column="1"
+               FontSize="70"
+               Text="25"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+
+        <Label Grid.Row="1"
+               Grid.Column="5"
+               FontSize="70"
+               Text="26"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+
+        <Picker x:Name="awayPicker"
+                Grid.ColumnSpan="3"
+                Grid.Row="2"
+                FontSize="25"
+                Title="Select a player"
+                >
+                <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Austin Oravec</x:String>
+                    <x:String>Sean Jackson</x:String>
+                    <x:String>Cody Marshall</x:String>
+                    <x:String>Mike Scarpelli</x:String>
+                    <x:String>Ian Drake</x:String>
+                    <x:String>Austin Oravec</x:String>
+                    <x:String>Sean Jackson</x:String>
+                    <x:String>Cody Marshall</x:String>
+                    <x:String>Mike Scarpelli</x:String>
+                    <x:String>Ian Drake</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Button Grid.Row="3"
+                Grid.RowSpan="1"                
+                Grid.ColumnSpan="2"
+                BackgroundColor="Green"
+                FontSize="25"
+                Text="+1"
+                />
+
+        <Button Grid.Row="3"
+                Grid.Column="2"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="1"
+                BackgroundColor="Green"
+                FontSize="25"
+                Text="+2"
+        />
+
+        <Button Grid.Row="3"
+                Grid.Column="5"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="1"
+                BackgroundColor="Green"
+                FontSize="25"
+                Text="+3"
+        />
+
+        <Picker x:Name="homePicker"
+                Grid.Column="4"
+                Grid.ColumnSpan="3"
+                Grid.Row="2"
+                FontSize="25"
+                Title="Select a player">
+                <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Austin Oravec</x:String>
+                    <x:String>Sean Jackson</x:String>
+                    <x:String>Cody Marshall</x:String>
+                    <x:String>Mike Scarpelli</x:String>
+                    <x:String>Ian Drake</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>      
+
+        <Button Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="Foul"
+        />
+
+        <Button Grid.Row="4"
+        Grid.Column="5"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="Missed 2"
+/>
+
+        <Button Grid.Row="4"
+        Grid.Column="6"
+        BackgroundColor="Red"
+        FontSize="25"
+        Text="Missed 3"
+/>
+
+        <Button Grid.Row="4"
+                Grid.Column="2"
+                Grid.ColumnSpan="3"
+        BackgroundColor="Blue"
+        FontSize="25"
+        Text="Undo"
+        />
+
+        <Button Grid.Row="5"
+        Grid.Column="0"
+        BackgroundColor="Silver"
+        FontSize="25"
+        Text="Assist"
+/>
+
+        <Button Grid.Row="5"
+        Grid.Column="1"
+        BackgroundColor="Silver"
+        FontSize="25"
+        Text="Steal"
+/>
+        <Button Grid.Row="6"
+                Grid.Column="4"
+        BackgroundColor="Silver"
+        FontSize="25"
+        Text="Turnover"
+        />
+
+        <Button Grid.Row="6"
+        Grid.Column="2"
+BackgroundColor="Silver"
+FontSize="25"
+Text="Block"
+/>
+
+        <Button Grid.Row="6"
+        Grid.Column="5"
+        BackgroundColor="Silver"
+        FontSize="25"
+        Text="OF Reb"
+/>
+
+        <Button Grid.Row="6"
+        Grid.Column="6"
+        BackgroundColor="Silver"
+        FontSize="25"
+        Text="DF Reb"
+                />
+    </Grid>    
+</ContentPage>
