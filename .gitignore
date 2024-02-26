@@ -435,3 +435,5 @@ API Gob Tracker/obj/Debug/net8.0/API Gob Tracker.AssemblyInfoInputs.cache
 API Gob Tracker/obj/Debug/net8.0/API Gob Tracker.AssemblyInfo.cs
 API Gob Tracker/obj/API Gob Tracker.csproj.nuget.g.props
 API Gob Tracker/obj/API Gob Tracker.csproj.nuget.dgspec.json
+*.cache
+API Gob Tracker/obj/Debug/net8.0/API Gob Tracker.AssemblyInfo.cs
