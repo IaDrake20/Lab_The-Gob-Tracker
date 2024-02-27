@@ -8300,23 +8300,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\iosdr\\.nuget\\packages\\": {},
+    "C:\\Users\\aust0\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\iosdr\\Documents\\GitHub\\Lab_The-Gob-Tracker\\API Gob Tracker\\API Gob Tracker.csproj",
+      "projectUniqueName": "C:\\Users\\aust0\\Desktop\\Lab_The-Gob-Tracker\\API Gob Tracker\\API Gob Tracker.csproj",
       "projectName": "API Gob Tracker",
-      "projectPath": "C:\\Users\\iosdr\\Documents\\GitHub\\Lab_The-Gob-Tracker\\API Gob Tracker\\API Gob Tracker.csproj",
-      "packagesPath": "C:\\Users\\iosdr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\iosdr\\Documents\\GitHub\\Lab_The-Gob-Tracker\\API Gob Tracker\\obj\\",
+      "projectPath": "C:\\Users\\aust0\\Desktop\\Lab_The-Gob-Tracker\\API Gob Tracker\\API Gob Tracker.csproj",
+      "packagesPath": "C:\\Users\\aust0\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aust0\\Desktop\\Lab_The-Gob-Tracker\\API Gob Tracker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\iosdr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aust0\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
