@@ -4,8 +4,14 @@
     {
         public int awayScore = 0;
         public int homeScore = 0;
+
         public bool awayTeam = false;
         public bool homeTeam = false;
+
+        public int intPeriod = 1;
+
+        public Color originalColor = Colors.Red;
+        public Color clickColor = Colors.White;
 
         public LiveEnterStats()
         {
@@ -14,7 +20,7 @@
 
         private void btnPlusOne_Clicked(object sender, EventArgs e)
         {
-            checkTeam();
+            selectPlayer();
             if (awayTeam) 
             {
                 awayScore++;
@@ -62,57 +68,88 @@
 
         private void btnFoul_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
 
+            clearNames();
         }
 
         private void btnMissedTwo_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
 
+            clearNames();
         }
 
         private void btnMissedThree_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
 
+            clearNames();
         }
 
         private void btnUndo_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
 
+            clearNames();
         }
 
         private void btnAssist_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
 
+            clearNames();
         }
 
         private void btnSteal_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
 
+            clearNames();
         }
 
         private void btnTurnover_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
 
+            clearNames();
         }
 
         private void btnPeriod_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
+            if (intPeriod == 4)
+            {
+                intPeriod = 1;
+            }
+            else
+            {
+                intPeriod++;
+            }
 
+            lblPeriod.Text = "Q" + intPeriod;
+            clearNames();
         }
 
         private void btnBlock_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
 
+            clearNames();
         }
 
         private void btnOffReb_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
 
+            clearNames();
         }
 
         private void btnDefReb_Clicked(object sender, EventArgs e)
         {
+            checkTeam();
 
+            clearNames();
         }
 
         public void clearNames()
@@ -134,6 +171,31 @@
             {
                 awayTeam = true;
             }
+        }
+
+        private void btnPressed(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                originalColor = button.BackgroundColor;
+                button.BackgroundColor = clickColor;
+            }
+        }
+
+        private void btnReleased(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                button.BackgroundColor = originalColor;
+            }
+        }
+
+        private async void selectPlayer()
+        {
+            var playerSelectionPage = new PlayerSelectionPage();
+            await Navigation.PushModalAsync(playerSelectionPage);
         }
     }
 }
