@@ -4,12 +4,12 @@
              x:Class="BasketballGUI.LiveEnterStats"
              Title="Enter Scores">
 
-    
+
     <!--Beginning of the Grid-->
-    
-    <Grid ColumnSpacing="10" RowSpacing="10">        
+
+    <Grid ColumnSpacing="10" RowSpacing="10">
         <Grid.RowDefinitions>
-            
+
             <!--Each creates a row with auto sizing or a height if specified-->
             <RowDefinition Height="70"/>
             <RowDefinition/>
@@ -18,7 +18,7 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height=" 60"/>
         </Grid.RowDefinitions>
-        
+
         <!--Each created a column with auto sizing or a width if specified-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -37,11 +37,11 @@
                FontSize="50"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
-        
+
         <!-- In case you want to color a box
         <BoxView Grid.Column="1"
                  Color="LightSkyBlue" />-->
-                
+
         <Label Grid.Column="4"
                x:Name="lblHomeTeam"
                Grid.ColumnSpan="3"
@@ -81,13 +81,8 @@
                 FontSize="25"
                 Title="Select a player:"
                 >
-                <Picker.ItemsSource>
+            <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
-                    <x:String>Austin Oravec</x:String>
-                    <x:String>Sean Jackson</x:String>
-                    <x:String>Cody Marshall</x:String>
-                    <x:String>Mike Scarpelli</x:String>
-                    <x:String>Ian Drake</x:String>
                     <x:String>Austin Oravec</x:String>
                     <x:String>Sean Jackson</x:String>
                     <x:String>Cody Marshall</x:String>
@@ -104,6 +99,8 @@
                 BackgroundColor="Green"
                 FontSize="25"
                 Clicked="btnPlusOne_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="+1"
                 />
 
@@ -115,6 +112,8 @@
                 BackgroundColor="Green"
                 FontSize="25"
                 Clicked="btnPlusTwo_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="+2"
         />
 
@@ -126,6 +125,8 @@
                 BackgroundColor="Green"
                 FontSize="25"
                 Clicked="btnPlusThree_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="+3"
         />
 
@@ -135,7 +136,7 @@
                 Grid.Row="2"
                 FontSize="25"
                 Title="Select a player:">
-                <Picker.ItemsSource>
+            <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Austin Oravec</x:String>
                     <x:String>Sean Jackson</x:String>
@@ -144,7 +145,7 @@
                     <x:String>Ian Drake</x:String>
                 </x:Array>
             </Picker.ItemsSource>
-        </Picker>      
+        </Picker>
 
         <Button Grid.Row="4"
                 Grid.Column="0"
@@ -153,6 +154,8 @@
                 BackgroundColor="Red"
                 FontSize="25"
                 Clicked="btnFoul_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="Foul"
         />
 
@@ -162,6 +165,8 @@
                 BackgroundColor="Red"
                 FontSize="25"
                 Clicked="btnMissedTwo_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="Missed 2"
 />
 
@@ -171,6 +176,8 @@
                 BackgroundColor="Red"
                 FontSize="25"
                 Clicked="btnMissedThree_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="Missed 3"
 />
 
@@ -181,6 +188,8 @@
                 BackgroundColor="Blue"
                 FontSize="25"
                 Clicked="btnUndo_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="Undo"
 />
 
@@ -190,6 +199,8 @@
                 BackgroundColor="Silver"
                 FontSize="25"
                 Clicked="btnAssist_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="Assist"
 />
 
@@ -199,6 +210,8 @@
                 BackgroundColor="Silver"
                 FontSize="25"
                 Clicked="btnSteal_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="Steal"
 />
         <Button Grid.Row="6"
@@ -207,6 +220,8 @@
                 BackgroundColor="Silver"
                 FontSize="25"
                 Clicked="btnTurnover_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="Turnover"
         />
 
@@ -216,6 +231,8 @@
                 BackgroundColor="Yellow"
                 FontSize="25"
                 Clicked="btnPeriod_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="Q"
         />
 
@@ -225,6 +242,8 @@
                 BackgroundColor="Silver"
                 FontSize="25"
                 Clicked="btnBlock_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="Block"
         />
 
@@ -234,6 +253,8 @@
                 BackgroundColor="Silver"
                 FontSize="25"
                 Clicked="btnOffReb_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="OF Reb"
         />
 
@@ -243,7 +264,9 @@
                 BackgroundColor="Silver"
                 FontSize="25"
                 Clicked="btnDefReb_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"
                 Text="DF Reb"
         />
-    </Grid>    
+    </Grid>
 </ContentPage>
