@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using API_Gob_Tracker;
 using API_Gob_Tracker.Models;
 
 namespace API_Gob_Tracker.Controllers
@@ -76,8 +75,13 @@ namespace API_Gob_Tracker.Controllers
         // POST: api/Games
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Game>> PostGame(Game game)
+        public async Task<ActionResult<Game>> PostGame(GamesDTO gameDTO)
         {
+            Game game = new Game();
+            game.Team1Id = gameDTO.Team1ID;
+            game.Team2Id = gameDTO.Team2ID;
+            game.DateTimeId = DateTimeOffset.Parse(gameDTO.date);
+
             _context.Games.Add(game);
             try
             {

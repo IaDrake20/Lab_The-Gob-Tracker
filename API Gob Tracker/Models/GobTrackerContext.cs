@@ -15,17 +15,17 @@ public partial class GobTrackerContext : DbContext
     {
     }
 
-    public virtual DbSet<Game> Games { get; set; }
+    public DbSet<Game> Games { get; set; } = default!;
 
-    public virtual DbSet<Player> Players { get; set; }
+    public DbSet<Player> Players { get; set; } = default!;
 
-    public virtual DbSet<PlayerTeam> PlayerTeams { get; set; }
+    public DbSet<PlayerTeam> PlayerTeams { get; set; } = default!;
 
-    public virtual DbSet<Stat> Stats { get; set; }
+    public DbSet<Stat> Stats { get; set; } = default!;
 
-    public virtual DbSet<StatType> StatTypes { get; set; }
+    public DbSet<StatType> StatTypes { get; set; } = default!;
 
-    public virtual DbSet<Team> Teams { get; set; }
+    public DbSet<Team> Teams { get; set; } = default!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=ConnectionStrings:DefaultConnection");
@@ -43,10 +43,12 @@ public partial class GobTrackerContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("DateTimeID");
-            entity.Property(e => e.Team1Id).HasColumnName("Team1ID");
-            entity.Property(e => e.Team2Id).HasColumnName("Team2ID");
+            entity.Property(e => e.Team1Id)
+                .HasColumnName("Team1ID");
+            entity.Property(e => e.Team2Id)
+                .HasColumnName("Team2ID");
 
-            entity.HasOne(d => d.Team1).WithMany(p => p.GameTeam1s)
+            /*entity.HasOne(d => d.Team1).WithMany(p => p.GameTeam1s)
                 .HasForeignKey(d => d.Team1Id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Team1ID");
@@ -54,14 +56,14 @@ public partial class GobTrackerContext : DbContext
             entity.HasOne(d => d.Team2).WithMany(p => p.GameTeam2s)
                 .HasForeignKey(d => d.Team2Id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Team2ID");
+                .HasConstraintName("FK_Team2ID");*/
         });
 
         modelBuilder.Entity<Player>(entity =>
         {
-            entity.Property(e => e.Id)
+            /*entity.Property(e => e.Id)
                 .ValueGeneratedNever()
-                .HasColumnName("ID");
+                .HasColumnName("ID");*/
             entity.Property(e => e.Fname)
                 .HasMaxLength(10)
                 .IsFixedLength()
@@ -82,7 +84,7 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.PlayerId).HasColumnName("PlayerID");
             entity.Property(e => e.TeamId).HasColumnName("TeamID");
 
-            entity.HasOne(d => d.Player).WithMany(p => p.PlayerTeams)
+            /*entity.HasOne(d => d.Player).WithMany(p => p.PlayerTeams)
                 .HasForeignKey(d => d.PlayerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PlayerTeam_Player");
@@ -90,7 +92,7 @@ public partial class GobTrackerContext : DbContext
             entity.HasOne(d => d.Team).WithMany(p => p.PlayerTeams)
                 .HasForeignKey(d => d.TeamId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_PlayerTeam_Team");
+                .HasConstraintName("FK_PlayerTeam_Team");*/
         });
 
         modelBuilder.Entity<Stat>(entity =>
@@ -104,7 +106,7 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.PlayerTeamId).HasColumnName("PlayerTeamID");
             entity.Property(e => e.StatTypeId).HasColumnName("StatTypeID");
 
-            entity.HasOne(d => d.Game).WithMany(p => p.Stats)
+           /* entity.HasOne(d => d.Game).WithMany(p => p.Stats)
                 .HasForeignKey(d => d.GameId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Stat_Game");
@@ -117,7 +119,7 @@ public partial class GobTrackerContext : DbContext
             entity.HasOne(d => d.StatType).WithMany(p => p.Stats)
                 .HasForeignKey(d => d.StatTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Stat_Stat Type");
+                .HasConstraintName("FK_Stat_Stat Type");*/
         });
 
         modelBuilder.Entity<StatType>(entity =>

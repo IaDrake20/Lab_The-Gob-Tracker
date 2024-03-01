@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using API_Gob_Tracker;
 using API_Gob_Tracker.Models;
 
 namespace API_Gob_Tracker.Controllers

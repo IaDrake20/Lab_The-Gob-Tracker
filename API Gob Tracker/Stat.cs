@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace API_Gob_Tracker;
+namespace API_Gob_Tracker.Models;
 
 public partial class Stat
 {
@@ -13,9 +13,9 @@ public partial class Stat
 
     public int StatTypeId { get; set; }
 
-    public virtual Game Game { get; set; } = null!;
+    /*public virtual Game Game { get; set; } = null!;
 
     public virtual PlayerTeam PlayerTeam { get; set; } = null!;
 
-    public virtual StatType StatType { get; set; } = null!;
+    public virtual StatType StatType { get; set; } = null!;*/
 }

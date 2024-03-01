@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using API_Gob_Tracker;
 using API_Gob_Tracker.Models;
 
 namespace API_Gob_Tracker.Controllers
@@ -76,8 +75,12 @@ namespace API_Gob_Tracker.Controllers
         // POST: api/Players
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Player>> PostPlayer(Player player)
+        public async Task<ActionResult<Player>> PostPlayer(PlayerDTO playerDTO)
         {
+
+            Player player = new Player();
+            player.Fname = playerDTO.FirstName;
+            player.Lname = playerDTO.LastName;
             _context.Players.Add(player);
             try
             {
