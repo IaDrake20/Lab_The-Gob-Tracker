@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace API_Gob_Tracker.Models;
+namespace API_Gob_Tracker;
 
 public partial class Game
 {

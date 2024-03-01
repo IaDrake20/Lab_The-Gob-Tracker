@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace API_Gob_Tracker.Models;
+namespace API_Gob_Tracker;
 
 public partial class StatType
 {
@@ -9,5 +9,5 @@ public partial class StatType
 
     public string Name { get; set; } = null!;
 
-   /* public virtual ICollection<Stat> Stats { get; set; } = new List<Stat>();*/
+    /* public virtual ICollection<Stat> Stats { get; set; } = new List<Stat>();*/
 }
