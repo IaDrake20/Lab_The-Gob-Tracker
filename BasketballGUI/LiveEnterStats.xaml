@@ -228,7 +228,7 @@
         <Button Grid.Row="6"
                 Grid.Column="3"
                 x:Name="btnPeriod"
-                BackgroundColor="Yellow"
+                BackgroundColor="DimGray"
                 FontSize="25"
                 Clicked="btnPeriod_Clicked"
                 Pressed="btnPressed"
