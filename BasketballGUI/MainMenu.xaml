@@ -12,6 +12,7 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
             <RowDefinition Height="20"/>
 
         </Grid.RowDefinitions>
@@ -26,33 +27,55 @@
 
         <Image Source="basketball.png"
                   Grid.ColumnSpan="2"
-                  Grid.RowSpan="3"/>
+                  Grid.RowSpan="4"/>
 
         
-        <Button Text="Teams"
+        <Button Text="View Stats"
                 x:Name="btnTeams"
                 Clicked="btnTeams_Clicked"
                 Grid.Column="2"
+                Grid.Row="2"
                 FontSize="Large"
-                CornerRadius="70"
+                CornerRadius="60"
+                Pressed="btnPressed"
+                Released="btnReleased"
+                BackgroundColor="DeepSkyBlue"
                 />
 
         <Button Text="New Game"
                 x:Name="btnNewGame"
                 Clicked="btnNewGame_Clicked"
-        Grid.Column="2"
+                Grid.Column="2"
+                Grid.Row="0"
+                FontSize="Large"
+                CornerRadius="60"
+                Pressed="btnPressed"
+                Released="btnReleased"
+                BackgroundColor="DeepSkyBlue"
+        />
+
+        <Button Text="View Game"
+                x:Name="btnViewGame"
+                Clicked="btnViewGame_Clicked"
+                Grid.Column="2"
                 Grid.Row="1"
-        FontSize="Large"
-        CornerRadius="70"
+                FontSize="Large"
+                CornerRadius="60"
+                Pressed="btnPressed"
+                Released="btnReleased"
+                BackgroundColor="DeepSkyBlue"
         />
 
         <Button Text="Quit"
                 x:Name="btnQuit"
                 Clicked="btnQuit_Clicked"
                 Grid.Column="2"
-                Grid.Row="2"
+                Grid.Row="3"
                 FontSize="Large"
-                CornerRadius="70"
+                CornerRadius="60"
+                Pressed="btnPressed"
+                Released="btnReleased"
+                BackgroundColor="DeepSkyBlue"
                 />
 
     </Grid>

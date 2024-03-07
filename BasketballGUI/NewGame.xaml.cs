@@ -1,20 +1,22 @@
 namespace BasketballGUI;
 
-public partial class Teams : ContentPage
+public partial class NewGame : ContentPage
 {
-	public Teams()
+    public Color originalColor = Colors.Red;
+    public Color clickColor = Colors.White;
+    public NewGame()
 	{
 		InitializeComponent();
 	}
 
+    private async void btnStartScoring_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new LiveEnterStats());
+    }
+
     private async void btnNewTeam_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new CreateTeam());
-    }
-
-    private async void btnViewStats_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new ViewStats());
     }
 
     private void btnPressed(object sender, EventArgs e)
@@ -35,6 +37,4 @@ public partial class Teams : ContentPage
             button.BackgroundColor = originalColor;
         }
     }
-    public Color originalColor = Colors.Red;
-    public Color clickColor = Colors.White;
 }
