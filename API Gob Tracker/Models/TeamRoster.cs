@@ -12,4 +12,5 @@ public partial class TeamRoster
     public int TeamNumber { get; set; }
 
     public string Name { get; set; } = null!;
+    public int Id { get; internal set; }
 }

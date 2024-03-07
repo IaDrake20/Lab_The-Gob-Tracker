@@ -22,4 +22,5 @@ public partial class AllRawStat
     public int PlayerTeamId { get; set; }
 
     public int StatTypeId { get; set; }
+    public int Id { get; internal set; }
 }

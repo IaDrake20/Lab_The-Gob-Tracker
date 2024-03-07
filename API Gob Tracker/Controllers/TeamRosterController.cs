@@ -24,7 +24,7 @@ namespace API_Gob_Tracker.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<StatsPlayer>>> GetTeamRoster(int id)
+        public async Task<ActionResult<IEnumerable<TeamRoster>>> GetTeamRoster(int id)
         {
             var _trs = await _context.TeamRosters.FindAsync(id);
 

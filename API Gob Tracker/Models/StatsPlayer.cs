@@ -14,4 +14,5 @@ public partial class StatsPlayer
     public string Abrv { get; set; } = null!;
 
     public decimal StatValue { get; set; }
+    public int Id { get; internal set; }
 }
