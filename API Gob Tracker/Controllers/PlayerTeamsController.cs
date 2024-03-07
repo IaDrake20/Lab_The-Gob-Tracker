@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using API_Gob_Tracker;
 using API_Gob_Tracker.Models;
 
 namespace API_Gob_Tracker.Controllers
@@ -79,21 +78,7 @@ namespace API_Gob_Tracker.Controllers
         public async Task<ActionResult<PlayerTeam>> PostPlayerTeam(PlayerTeam playerTeam)
         {
             _context.PlayerTeams.Add(playerTeam);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (PlayerTeamExists(playerTeam.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPlayerTeam", new { id = playerTeam.Id }, playerTeam);
         }
