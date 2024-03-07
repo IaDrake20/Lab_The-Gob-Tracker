@@ -26,8 +26,6 @@ namespace API_Gob_Tracker.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<Schedule>>> GetSchedule(int id)
         {
-            var _schedule = await _context.Schedules.FindAsync(id);
-
             if (_context.Schedules == null)
             {
                 return NotFound();

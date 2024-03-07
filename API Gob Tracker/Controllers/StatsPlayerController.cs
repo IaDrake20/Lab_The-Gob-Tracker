@@ -26,8 +26,6 @@ namespace API_Gob_Tracker.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<StatsPlayer>>> GetStatsPlayer(int id)
         {
-            var pstat = await _context.StatsPlayers.FindAsync(id);
-
             if(_context.StatsPlayers == null)
             {
                 return NotFound();
