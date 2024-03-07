@@ -39,6 +39,7 @@
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
+                BackgroundColor="DeepSkyBlue"
                 />
 
         <Button Text="New Game"
@@ -50,6 +51,7 @@
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
+                BackgroundColor="DeepSkyBlue"
         />
 
         <Button Text="View Game"
@@ -61,6 +63,7 @@
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
+                BackgroundColor="DeepSkyBlue"
         />
 
         <Button Text="Quit"
@@ -72,6 +75,7 @@
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
+                BackgroundColor="DeepSkyBlue"
                 />
 
     </Grid>

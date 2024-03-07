@@ -9,11 +9,11 @@
             <!--Each creates a row with auto sizing or a height if specified-->
             <RowDefinition Height="5"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="15"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="70" />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="15" />
             <RowDefinition Height="100"/>
-            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="120"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
@@ -32,8 +32,8 @@
         <Picker x:Name="periodPicker"
                 Grid.Row="5"
                 Grid.Column="1"
-                Grid.ColumnSpan="5"                
-                FontSize="20"                
+                Grid.ColumnSpan="2"                
+                FontSize="25"                
         Title="4 quarters or 2 halves?"
 >
             <Picker.ItemsSource>
@@ -84,6 +84,7 @@
         <Button Text="Start Game"
                 x:Name="btnStartScoring"
                 Clicked="btnStartScoring_Clicked"
+                CornerRadius="70"
                 FontSize="40"
                 Grid.Column="2"
                 Grid.ColumnSpan="3"
@@ -98,6 +99,7 @@
                 Clicked="btnNewTeam_Clicked"
                 FontSize="30"
                 Grid.Column="2"
+                CornerRadius="35"
                 Grid.ColumnSpan="3"
                 Grid.Row="3"
                 Pressed="btnPressed"
