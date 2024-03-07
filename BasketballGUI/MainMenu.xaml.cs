@@ -3,8 +3,7 @@ namespace BasketballGUI;
 public partial class MainMenu : ContentPage
 {
 
-    public Color originalColor = Colors.Red;
-    public Color clickColor = Colors.White;
+    
 
     public MainMenu()
 	{
@@ -26,9 +25,9 @@ public partial class MainMenu : ContentPage
         await Navigation.PushAsync(new Teams());
     }
 
-    private void btnViewGame_Clicked(object sender, EventArgs e)
+    private async void btnViewGame_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new LiveGame());
     }
 
     private void btnPressed(object sender, EventArgs e)
@@ -49,4 +48,6 @@ public partial class MainMenu : ContentPage
             button.BackgroundColor = originalColor;
         }
     }
+    public Color originalColor = Colors.Red;
+    public Color clickColor = Colors.White;
 }

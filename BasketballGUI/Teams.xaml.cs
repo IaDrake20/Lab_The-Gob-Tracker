@@ -12,8 +12,29 @@ public partial class Teams : ContentPage
         await Navigation.PushAsync(new CreateTeam());
     }
 
-    private void btnViewStats_Clicked(object sender, EventArgs e)
+    private async void btnViewStats_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new ViewStats());
     }
+
+    private void btnPressed(object sender, EventArgs e)
+    {
+        var button = sender as Button;
+        if (button != null)
+        {
+            originalColor = button.BackgroundColor;
+            button.BackgroundColor = clickColor;
+        }
+    }
+
+    private void btnReleased(object sender, EventArgs e)
+    {
+        var button = sender as Button;
+        if (button != null)
+        {
+            button.BackgroundColor = originalColor;
+        }
+    }
+    public Color originalColor = Colors.Red;
+    public Color clickColor = Colors.White;
 }
