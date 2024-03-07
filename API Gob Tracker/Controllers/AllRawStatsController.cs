@@ -26,8 +26,6 @@ namespace API_Gob_Tracker.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<AllRawStat>>> GetAllRawStat(int id)
         {
-            //IAN: underscore signals context reference
-            var _ars = await _context.AllRawStats.FindAsync(id);
 
             if (_context.AllRawStats == null)
             {
