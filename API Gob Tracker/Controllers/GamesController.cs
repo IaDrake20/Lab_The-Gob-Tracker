@@ -83,21 +83,7 @@ namespace API_Gob_Tracker.Controllers
             game.DateTimeId = DateTimeOffset.Parse(gameDTO.date);
 
             _context.Games.Add(game);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (GameExists(game.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetGame", new { id = game.Id }, game);
         }

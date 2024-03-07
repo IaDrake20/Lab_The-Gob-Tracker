@@ -78,21 +78,7 @@ namespace API_Gob_Tracker.Controllers
         public async Task<ActionResult<Stat>> PostStat(Stat stat)
         {
             _context.Stats.Add(stat);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (StatExists(stat.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetStat", new { id = stat.Id }, stat);
         }

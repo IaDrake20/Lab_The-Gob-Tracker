@@ -82,21 +82,7 @@ namespace API_Gob_Tracker.Controllers
             player.Fname = playerDTO.FirstName;
             player.Lname = playerDTO.LastName;
             _context.Players.Add(player);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (PlayerExists(player.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
         }

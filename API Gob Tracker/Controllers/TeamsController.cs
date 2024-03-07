@@ -78,21 +78,7 @@ namespace API_Gob_Tracker.Controllers
         public async Task<ActionResult<Team>> PostTeam(Team team)
         {
             _context.Teams.Add(team);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (TeamExists(team.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetTeam", new { id = team.Id }, team);
         }

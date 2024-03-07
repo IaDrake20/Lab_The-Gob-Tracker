@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace API_Gob_Tracker;
+namespace API_Gob_Tracker.Models;
 
 public partial class Team
 {
     public int Id { get; set; }
 
-    public int Number { get; set; }
+    public int Ranking { get; set; }
 
     public string Name { get; set; } = null!;
 
