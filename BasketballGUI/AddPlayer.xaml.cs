@@ -1,6 +1,7 @@
+//using Android.Media;
 using Newtonsoft.Json;
 using System.Diagnostics;
-using Windows.Networking;
+//using Windows.Networking;
 
 namespace BasketballGUI;
 
@@ -25,21 +26,22 @@ public partial class AddPlayer : ContentPage
         }
         // Assuming your API requires a full name, you can concatenate them or adjust as needed
         var fullName = $"{firstName} {lastName}";
-
-        await AddPlayerToTeam(teamId, fullName);
+        int playerID=await MakePlayer(firstName, lastName);
+        await AddPlayerToTeam(teamId, playerID);
 
         // Clear the entry after adding
         firstNameEntry.Text = string.Empty;
         lastNameEntry.Text = string.Empty;
     }
 
-    private async Task AddPlayerToTeam(int teamId, string playerName)
+    private async Task<int> MakePlayer(string f, string l)
     {
         // Implementation depends on how you're storing and managing data
         // For example, sending a POST request to a REST API
-        var newPlayer = new { FullName = playerName, TeamId = teamId };
-        string apiUrl = "https://localhost:7067/api/PlayerTeams"; // Adjust URL as necessary
 
+        var newPlayer = new { FName=f, LName=l};
+        string apiUrl = "https://localhost:7067/api/Players"; // Adjust URL as necessary
+        int playerId = -1;
         using (var client = new HttpClient())
         {
             var json = JsonConvert.SerializeObject(newPlayer);
@@ -48,6 +50,8 @@ public partial class AddPlayer : ContentPage
             var response = await client.PostAsync(apiUrl, content);
             if (response.IsSuccessStatusCode)
             {
+                var responseContent = await response.Content.ReadAsStringAsync();
+                playerId = JsonConvert.DeserializeObject<int>(responseContent);
                 // Optionally, notify the user that the player was added successfully
                 Debug.WriteLine("Player added successfully");
             }
@@ -57,8 +61,19 @@ public partial class AddPlayer : ContentPage
                 Debug.WriteLine($"Failed to add player. Status code: {response.StatusCode}");
             }
         }
+        return playerId;
     }
+    private async Task AddPlayerToTeam(int t, int p)
+    {
+        var newPlayerTeam = new { TeamId = t, PlayerID = p };
+        string apiUrl = "https://localhost:7067/api/PlayerTeams";
+        using (var client = new HttpClient())
+        {
+            var json = JsonConvert.SerializeObject(newPlayerTeam);
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+        }
 
+        }
     private void btnPressed(object sender, EventArgs e)
     {
         var button = sender as Button;
