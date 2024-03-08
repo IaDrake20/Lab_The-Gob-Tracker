@@ -68,7 +68,7 @@ public partial class PlayerPage : ContentPage
         if (selectedPlayer != null)
         {
             // Assuming TeamRoster has Id and FullName properties
-            await Navigation.PushAsync(new PlayerStats(selectedPlayer.Id, selectedPlayer.FullName));
+            await Navigation.PushAsync(new PlayerStats(selectedPlayer.TeamID, selectedPlayer.FullName));
         }
     }
 

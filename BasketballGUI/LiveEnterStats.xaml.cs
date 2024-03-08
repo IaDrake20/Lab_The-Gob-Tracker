@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using API_Gob_Tracker.Models;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text;
 
 namespace BasketballGUI
 {
@@ -9,6 +11,9 @@ namespace BasketballGUI
         public ObservableCollection<TeamRoster> AwayPlayerList { get; set; }
         public ObservableCollection<TeamRoster> HomePlayerList { get; set; }
         public int GameId;
+        public int T1Id;
+        public int T2Id;
+        PlayerTeam SelectedPlayer;
         public Color originalColor = Colors.Red;
         public Color clickColor = Colors.White;
 
@@ -21,14 +26,73 @@ namespace BasketballGUI
             BindingContext = this;
             GetPlayersAsync();
             GetTeamsAsync();
+            KeepScoreAsync();
 
+        }
+
+        private async Task KeepScoreAsync()
+        {
+            while (true)
+            {
+                await Task.Delay(10000);
+
+            }
+        }
+
+
+        private async Task GetScoreStatsAsync()
+        {
+            string apiUrl = "https://localhost:7067/api/ScoringStats";
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonString = await response.Content.ReadAsStringAsync();
+
+                        List<ScoringStat> stats = JsonConvert.DeserializeObject<List<ScoringStat>>(jsonString);
+
+
+                        foreach (ScoringStat stat in stats)
+                        {
+                            if(stat.GameID == GameId)
+                            {
+                                if(stat.TeamID == T1Id)
+                                {
+                                    lblHomeScore.Text = stat.TotalPtsMade.ToString();
+                                }
+                                else if(stat.TeamID == T2Id)
+                                {
+                                    lblAwayScore.Text = stat.TotalPtsMade.ToString();
+                                }
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        Debug.WriteLine("API request failed with status code:" + response.StatusCode);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error: " + ex.Message);
+
+                }
+            }
         }
 
 
         private async Task GetPlayersAsync()
         {
             string apiUrl = "https://localhost:7067/api/TeamRoster/";
-            
+
             using (HttpClient client = new HttpClient())
             {
                 Game game = await GetGameAsync(GameId);
@@ -44,7 +108,7 @@ namespace BasketballGUI
                         List<TeamRoster> roster = JsonConvert.DeserializeObject<List<TeamRoster>>(jsonString);
 
 
-                        foreach(TeamRoster player in roster)
+                        foreach (TeamRoster player in roster)
                         {
                             Debug.WriteLine(player.FullName);
                             HomePlayerList.Add(player);
@@ -102,6 +166,8 @@ namespace BasketballGUI
 
             string apiUrl = "https://localhost:7067/api/Teams/";
             Game game = await GetGameAsync(GameId);
+            T1Id = game.Team1Id;
+            T2Id = game.Team2Id;
             using (HttpClient client = new HttpClient())
             {
 
@@ -161,7 +227,7 @@ namespace BasketballGUI
             Game game = new Game();
             using (HttpClient client = new HttpClient())
             {
-                
+
                 try
                 {
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
@@ -191,173 +257,248 @@ namespace BasketballGUI
             }
         }
 
-        /*private void btnPlusOne_Clicked(object sender, EventArgs e)
+        private async void btnPlusOne_Clicked(object sender, EventArgs e)
         {
-            
-        }
-
-        private void btnPlusTwo_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-            if (awayTeam)
+            if (homePicker.SelectedIndex == -1 && awayPicker.SelectedIndex == -1)
             {
-                awayScore += 2;
-                lblAwayScore.Text = "" + awayScore;
+                return;
             }
-            else if (homeTeam)
+            else if (homePicker.SelectedIndex != -1)
             {
-                homeScore += 2;
-                lblHomeScore.Text = "" + homeScore;
+                TeamRoster player = homePicker.SelectedItem as TeamRoster;
+                Stat NewFreeThrow = new Stat();
+                NewFreeThrow.StatValue = 1;
+                NewFreeThrow.StatTypeId = 5;
+                NewFreeThrow.GameId = GameId;
+                NewFreeThrow.PlayerTeamId = player.PlayerTeamID;
+                await PostStatAsync(NewFreeThrow);
+                homePicker.SelectedItem = null;
+                homePicker.SelectedIndex = -1;
             }
-            clearNames();
-        }
-
-        private void btnPlusThree_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-            if (awayTeam)
+            else if(awayPicker.SelectedIndex != -1) 
             {
-                awayScore += 3;
-                lblAwayScore.Text = "" + awayScore;
-            }
-            else if (homeTeam)
-            {
-                homeScore += 3;
-                lblHomeScore.Text = "" + homeScore;
-            }
-            clearNames();
-        }
-
-        private void btnFoul_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-
-            clearNames();
-        }
-
-        private void btnMissedTwo_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-
-            clearNames();
-        }
-
-        private void btnMissedThree_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-
-            clearNames();
-        }
-
-        private void btnUndo_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-
-            clearNames();
-        }
-
-        private void btnAssist_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-
-            clearNames();
-        }
-
-        private void btnSteal_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-
-            clearNames();
-        }
-
-        private void btnTurnover_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-
-            clearNames();
-        }
-
-        private void btnPeriod_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-            if (intPeriod == 4)
-            {
-                intPeriod = 1;
-            }
-            else
-            {
-                intPeriod++;
-            }
-
-            lblPeriod.Text = "Q" + intPeriod;
-            clearNames();
-        }
-
-        private void btnBlock_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-
-            clearNames();
-        }
-
-        private void btnOffReb_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-
-            clearNames();
-        }
-
-        private void btnDefReb_Clicked(object sender, EventArgs e)
-        {
-            checkTeam();
-
-            clearNames();
-        }
-
-        public void clearNames()
-        {
-            homePicker.SelectedIndex = -1;
-            awayPicker.SelectedIndex = -1;
-            homeTeam = false;
-            awayTeam = false;
-
-        }
-        public void checkTeam()
-        {
-            if (homePicker.SelectedIndex > -1)
-            {
-                homeTeam = true;
-            }
-
-            if (awayPicker.SelectedIndex > -1)
-            {
-                awayTeam = true;
+                TeamRoster player = awayPicker.SelectedItem as TeamRoster;
+                Stat NewFreeThrow = new Stat();
+                NewFreeThrow.StatValue = 1;
+                NewFreeThrow.StatTypeId = 5;
+                NewFreeThrow.GameId = GameId;
+                NewFreeThrow.PlayerTeamId = player.PlayerTeamID;
+                await PostStatAsync(NewFreeThrow);
+                awayPicker.SelectedItem = null;
+                awayPicker.SelectedIndex = -1;
             }
         }
 
-        private void btnPressed(object sender, EventArgs e)
+        private async Task PostStatAsync(Stat stat)
         {
-            var button = sender as Button;
-            if (button != null)
+            string apiUrl = "https://localhost:7067/api/Stats";
+
+            using (HttpClient client = new HttpClient())
             {
-                originalColor = button.BackgroundColor;
-                button.BackgroundColor = clickColor;
+                try
+                {
+
+                    string jsonString = JsonConvert.SerializeObject(stat);
+                    HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Debug.WriteLine("Stat successfully added.");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Failed to add Stat. Status code: " + response.StatusCode);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.Write(ex.ToString());
+                }
             }
+
         }
 
-        private void btnReleased(object sender, EventArgs e)
-        {
-            var button = sender as Button;
-            if (button != null)
+            private async void btnPlusTwo_Clicked(object sender, EventArgs e)
             {
-                button.BackgroundColor = originalColor;
+                if (homePicker.SelectedIndex == -1 && awayPicker.SelectedIndex == -1)
+                {
+                    return;
+                }
+                else if (homePicker.SelectedIndex != -1)
+                {
+                    TeamRoster player = homePicker.SelectedItem as TeamRoster;
+                    Stat NewTwoPoint = new Stat();
+                    NewTwoPoint.StatValue = 1;
+                    NewTwoPoint.StatTypeId = 1;
+                    NewTwoPoint.GameId = GameId;
+                    NewTwoPoint.PlayerTeamId = player.PlayerTeamID;
+                    await PostStatAsync(NewTwoPoint);
+                    homePicker.SelectedItem = null;
+                    homePicker.SelectedIndex = -1;
+                }
+                else if (awayPicker.SelectedIndex != -1)
+                {
+                    TeamRoster player = awayPicker.SelectedItem as TeamRoster;
+                    Stat NewFreeThrow = new Stat();
+                    NewFreeThrow.StatValue = 1;
+                    NewFreeThrow.StatTypeId = 5;
+                    NewFreeThrow.GameId = GameId;
+                    NewFreeThrow.PlayerTeamId = player.PlayerTeamID;
+                    await PostStatAsync(NewFreeThrow);
+                    awayPicker.SelectedItem = null;
+                    awayPicker.SelectedIndex = -1;
+                }
             }
-        }*/
 
-        // private async void selectPlayer()
-        // {
-        // var playerSelectionPage = new PlayerSelectionPage();
-        // await Navigation.PushModalAsync(playerSelectionPage);
-        // }
+            /*private void btnPlusThree_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+                if (awayTeam)
+                {
+                    awayScore += 3;
+                    lblAwayScore.Text = "" + awayScore;
+                }
+                else if (homeTeam)
+                {
+                    homeScore += 3;
+                    lblHomeScore.Text = "" + homeScore;
+                }
+                clearNames();
+            }
+
+            private void btnFoul_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+
+                clearNames();
+            }
+
+            private void btnMissedTwo_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+
+                clearNames();
+            }
+
+            private void btnMissedThree_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+
+                clearNames();
+            }
+
+            private void btnUndo_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+
+                clearNames();
+            }
+
+            private void btnAssist_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+
+                clearNames();
+            }
+
+            private void btnSteal_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+
+                clearNames();
+            }
+
+            private void btnTurnover_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+
+                clearNames();
+            }
+
+            private void btnPeriod_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+                if (intPeriod == 4)
+                {
+                    intPeriod = 1;
+                }
+                else
+                {
+                    intPeriod++;
+                }
+
+                lblPeriod.Text = "Q" + intPeriod;
+                clearNames();
+            }
+
+            private void btnBlock_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+
+                clearNames();
+            }
+
+            private void btnOffReb_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+
+                clearNames();
+            }
+
+            private void btnDefReb_Clicked(object sender, EventArgs e)
+            {
+                checkTeam();
+
+                clearNames();
+            }
+
+            public void clearNames()
+            {
+                homePicker.SelectedIndex = -1;
+                awayPicker.SelectedIndex = -1;
+                homeTeam = false;
+                awayTeam = false;
+
+            }
+            public void checkTeam()
+            {
+                if (homePicker.SelectedIndex > -1)
+                {
+                    homeTeam = true;
+                }
+
+                if (awayPicker.SelectedIndex > -1)
+                {
+                    awayTeam = true;
+                }
+            }
+
+            private void btnPressed(object sender, EventArgs e)
+            {
+                var button = sender as Button;
+                if (button != null)
+                {
+                    originalColor = button.BackgroundColor;
+                    button.BackgroundColor = clickColor;
+                }
+            }
+
+            private void btnReleased(object sender, EventArgs e)
+            {
+                var button = sender as Button;
+                if (button != null)
+                {
+                    button.BackgroundColor = originalColor;
+                }
+            }*/
+
+            // private async void selectPlayer()
+            // {
+            // var playerSelectionPage = new PlayerSelectionPage();
+            // await Navigation.PushModalAsync(playerSelectionPage);
+            // }
+        }
     }
-}
+
