@@ -118,7 +118,6 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.TeamId).HasColumnName("TeamID");
 
             /*
-
             entity.HasOne(d => d.Player).WithMany(p => p.PlayerTeams)
                 .HasForeignKey(d => d.PlayerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
