@@ -5,7 +5,7 @@ namespace API_Gob_Tracker.Models;
 
 public partial class Team
 {
-    public int Id { get; set; }
+    public int Id { get; internal set; }
 
     public int Ranking { get; set; }
 
