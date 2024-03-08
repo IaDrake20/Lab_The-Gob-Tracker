@@ -42,4 +42,29 @@ public partial class Teams : ContentPage
     }
     public Color originalColor = Colors.Red;
     public Color clickColor = Colors.White;
+
+    private async void btnAddPlayers_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AddPlayer());
+    }
+
+    private async void btnRemovePlayers_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AddPlayer());
+    }
+
+    private async void btnGameStats_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AddPlayer());
+    }
+
+    private async void btnTotalStats_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AddPlayer());
+    }
+
+    private async void btnSchedule_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AddPlayer());
+    }
 }

@@ -40,7 +40,7 @@
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
-                BackgroundColor="DimGray"
+                BackgroundColor="DarkSlateGray"
                 TextColor="White"
                 />
 
@@ -53,7 +53,7 @@
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
-                BackgroundColor="DimGray"
+                BackgroundColor="DarkOliveGreen"
                 TextColor="White"
         />
 
@@ -79,7 +79,7 @@ TextColor="White"
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
-                BackgroundColor="DimGray"
+                BackgroundColor="DarkRed"
 TextColor="White"
                 />
 

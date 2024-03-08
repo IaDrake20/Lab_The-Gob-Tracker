@@ -63,7 +63,7 @@
                     Clicked="btnNewTeam_Clicked"
                     CornerRadius="25"
                     Pressed="btnPressed"
-                    BackgroundColor="Green"
+                    BackgroundColor="DarkOliveGreen"
                     TextColor="White"
                     Released="btnReleased"/>
 
@@ -73,10 +73,10 @@
                 Grid.Row="3"
                 CornerRadius="40"
                 FontSize="25"
-                x:Name="btnViewStats"
-                BackgroundColor="Green"
+                x:Name="btnAddPlayers"
+                BackgroundColor="DarkOliveGreen"
                 TextColor="White"
-                Clicked="btnViewStats_Clicked"
+                Clicked="btnAddPlayers_Clicked"
                 Pressed="btnPressed"
                 Released="btnReleased"/>
 
@@ -86,10 +86,10 @@
         Grid.Row="3"
         CornerRadius="40"
         FontSize="25"
-        x:Name="btnViewStats"
-        BackgroundColor="Red"
+        x:Name="btnRemovePlayers"
+        BackgroundColor="DarkRed"
         TextColor="White"
-        Clicked="btnViewStats_Clicked"
+        Clicked="btnRemovePlayers_Clicked"
         Pressed="btnPressed"
         Released="btnReleased"/>
 
@@ -99,10 +99,10 @@
         Grid.Row="4"
         CornerRadius="40"
         FontSize="25"
-        x:Name="btnViewStats"
+        x:Name="btnGameStats"
         BackgroundColor="DimGray"
         TextColor="White"
-        Clicked="btnViewStats_Clicked"
+        Clicked="btnGameStats_Clicked"
         Pressed="btnPressed"
         Released="btnReleased"/>
 
@@ -112,10 +112,10 @@
         Grid.Row="4"
         CornerRadius="40"
         FontSize="25"
-        x:Name="btnViewStats"
+        x:Name="btnTotalStats"
         BackgroundColor="DimGray"
         TextColor="White"
-        Clicked="btnViewStats_Clicked"
+        Clicked="btnTotalStats_Clicked"
         Pressed="btnPressed"
         Released="btnReleased"/>
 
@@ -125,10 +125,10 @@
         Grid.Row="5"
         CornerRadius="40"
         FontSize="25"
-        x:Name="btnViewStats"
+        x:Name="btnSchedule"
         BackgroundColor="DarkSlateGray"
         TextColor="White"
-        Clicked="btnViewStats_Clicked"
+        Clicked="btnSchedule_Clicked"
         Pressed="btnPressed"
         Released="btnReleased"/>
 
