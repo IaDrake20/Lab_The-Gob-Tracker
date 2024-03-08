@@ -156,11 +156,10 @@ public partial class GobTrackerContext : DbContext
                 .HasNoKey()
                 .ToView("ScoringStats");
 
-            entity.Property(e => e.AwayTeamId).HasColumnName("AwayTeamID");
-            entity.Property(e => e.HomeTeamId).HasColumnName("HomeTeamID");
-            entity.Property(e => e.Total1PtsMade).HasColumnType("decimal(38, 4)");
-            entity.Property(e => e.Total2PtsMade).HasColumnType("decimal(38, 4)");
-            entity.Property(e => e.Total3PtsMade).HasColumnType("decimal(38, 4)");
+            entity.Property(e => e.GameID).HasColumnName("AwayTeamID");
+            entity.Property(e => e.TeamID).HasColumnName("HomeTeamID");
+            entity.Property(e => e.TotalPtsMade).HasColumnType("decimal(38, 4)");
+           
         });
 
         modelBuilder.Entity<SeasonStat>(entity =>

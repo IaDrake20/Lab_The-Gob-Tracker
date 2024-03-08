@@ -11,44 +11,33 @@ namespace API_Gob_Tracker.Controllers
     {
         [Route("api/[controller]")]
         [ApiController]
-        public class ScoringStatController : ControllerBase
+        public class ScoringStatController : Controller
         {
-            private readonly GobTrackerContext _context;
+            private readonly GobTrackerContext _context; // Replace YourDbContext with your actual DbContext
 
             public ScoringStatController(GobTrackerContext context)
             {
                 _context = context;
             }
 
-            // GET: api/ScoringStats
-            [HttpGet]
-            public async Task<ActionResult<IEnumerable<ScoringStat>>> GetScoringStat()
+            // Action to display all scoring stats
+            public IActionResult Index()
             {
-                return await _context.ScoringStats.ToListAsync();
+                var scoringStats = _context.ScoringStats.ToList();
+                return View(scoringStats);
             }
 
-            [HttpGet("{id}")]
-            public async Task<ActionResult<IEnumerable<ScoringStat>>> GetAllScoringStat(int id)
+            // Action to display details of a specific scoring stat
+            public IActionResult Details(int id)
             {
-
-                if (_context.ScoringStats == null)
+                var scoringStat = _context.ScoringStats.FirstOrDefault(s => s.GameID == id);
+                if (scoringStat == null)
                 {
                     return NotFound();
                 }
-
-                var ss = await _context.ScoringStats.ToListAsync();
-
-                if (ss == null)
-                {
-                    return NotFound();
-                }
-
-                //LINQ
-                //IAN: for now I just made it hometeamID
-                var resultScoringStats = ss.Where(x => x.HomeTeamId == id).ToList();
-
-                return resultScoringStats;
+                return View(scoringStat);
             }
+
         }
     }
-}
+    }
