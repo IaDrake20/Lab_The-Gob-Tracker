@@ -83,7 +83,7 @@
         x:Name="btnRemovePlayers"
         BackgroundColor="DarkSlateGray"
         TextColor="White"
-        Clicked="btnRemovePlayers_Clicked"
+        Clicked="btnSchedule_Clicked"
         Pressed="btnPressed"
         Released="btnReleased"/>
 
@@ -94,10 +94,10 @@
         Grid.Row="5"
         CornerRadius="40"
         FontSize="25"
-        x:Name="btnSchedule"
+        x:Name="btnBack"
         BackgroundColor="DarkRed"
         TextColor="White"
-        Clicked="btnSchedule_Clicked"
+        Clicked="btnBack_Clicked"
         Pressed="btnPressed"
         Released="btnReleased"/>
 

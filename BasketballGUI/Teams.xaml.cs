@@ -85,26 +85,16 @@ public partial class Teams : ContentPage
 
     private async void btnAddPlayers_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddPlayer());
-    }
-
-    private async void btnRemovePlayers_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new AddPlayer());
-    }
-
-    private async void btnGameStats_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new AddPlayer());
-    }
-
-    private async void btnTotalStats_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new AddPlayer());
+        await Navigation.PushAsync(new PlayerPage());
     }
 
     private async void btnSchedule_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddPlayer());
+        await Navigation.PushAsync(new TeamSchedule());
+    }
+
+    private async void btnBack_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
     }
 }
