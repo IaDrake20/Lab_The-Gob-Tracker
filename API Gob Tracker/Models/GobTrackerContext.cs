@@ -268,7 +268,8 @@ public partial class GobTrackerContext : DbContext
                 .HasMaxLength(10)
                 .IsFixedLength()
                 .HasColumnName("FName");
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.TeamID).HasColumnName("TeamID");
+            entity.Property(e => e.PlayerID).HasColumnName("PlayerID");
             entity.Property(e => e.Lname)
                 .HasMaxLength(10)
                 .IsFixedLength()
