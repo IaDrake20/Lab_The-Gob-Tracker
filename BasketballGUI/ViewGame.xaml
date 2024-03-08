@@ -5,6 +5,7 @@
              Title="ViewGame">
     <VerticalStackLayout>
         <Label 
+            x:Name  ="testText"
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
