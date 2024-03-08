@@ -80,6 +80,8 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.DateTimeId).HasColumnName("DateTimeID");
             entity.Property(e => e.Team1Id).HasColumnName("Team1ID");
             entity.Property(e => e.Team2Id).HasColumnName("Team2ID");
+            entity.Property(e => e.Half).HasColumnName("Half");
+            entity.Property(e => e.Quarter).HasColumnName("Quarter");
 
             /*
             entity.HasOne(d => d.Team1).WithMany(p => p.GameTeam1s)
