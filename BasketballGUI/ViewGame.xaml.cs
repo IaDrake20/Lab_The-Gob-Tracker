@@ -1,12 +1,14 @@
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace BasketballGUI;
 
 public partial class ViewGame : ContentPage
 {
     public ObservableCollection<Schedule> MasterList { get; set; }
+    Schedule SelectedGame;
     public ViewGame()
 	{
 		InitializeComponent();
@@ -14,17 +16,11 @@ public partial class ViewGame : ContentPage
         GetGamesAsync();
         BindingContext = this;
 	}
-   /* private async void btnViewGame_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new LiveGame());
-    }*/
-
 
     async private Task GetGamesAsync()
     {
         MasterList = new ObservableCollection<Schedule>();
         string apiUrl = "https://localhost:7067/api/Schedule";
-        
 
         using (HttpClient client = new HttpClient())
         {
@@ -41,7 +37,10 @@ public partial class ViewGame : ContentPage
                     MasterList.Clear();
                     foreach (var game in games)
                     {
-                        MasterList.Add(game);
+                        if(game.DateTimeId.Date == DateTimeOffset.Now.Date)
+                        {
+                            MasterList.Add(game);
+                        }
                     }
 
                 }
@@ -58,4 +57,19 @@ public partial class ViewGame : ContentPage
             }
         }
     }
+
+
+    private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        if(e.SelectedItem == null)
+        {
+            return;
+        }
+
+        SelectedGame = e.SelectedItem as Schedule;
+
+        await Navigation.PushAsync(new LiveGame());
+    }
+
+     
 }

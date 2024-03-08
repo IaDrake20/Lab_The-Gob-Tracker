@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BasketballGUI.ViewGame"
              Title="Today's Games:">
-    <ListView ItemsSource="{Binding MasterList}" VerticalOptions="Start">
+    <ListView ItemsSource="{Binding MasterList}" SelectedItem = "{Binding SelectedGame}" ItemSelected="OnItemSelected" VerticalOptions="Start" >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
