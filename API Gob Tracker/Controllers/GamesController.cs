@@ -81,6 +81,8 @@ namespace API_Gob_Tracker.Controllers
             game.Team1Id = gameDTO.Team1ID;
             game.Team2Id = gameDTO.Team2ID;
             game.DateTimeId = DateTimeOffset.Parse(gameDTO.date);
+            game.Quarter = gameDTO.Quarter;
+            game.Half = gameDTO.Half;
 
             _context.Games.Add(game);
             await _context.SaveChangesAsync();
