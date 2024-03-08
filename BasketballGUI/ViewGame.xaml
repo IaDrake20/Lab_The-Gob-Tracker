@@ -2,16 +2,28 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BasketballGUI.ViewGame"
-             Title="Todays Games:">
-    <ListView ItemsSource="{Binding MasterList}" >
+             Title="Today's Games:">
+    <ListView ItemsSource="{Binding MasterList}" VerticalOptions="Start">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <HorizontalStackLayout Padding="10">
-                        <Label Text="{Binding HomeTeam}" FontAttributes="Bold" />
-                        <Label Text=" vs " />
-                        <Label Text="{Binding AwayTeam}" FontAttributes="Bold" VerticalOptions="End" />
-                    </HorizontalStackLayout>
+                    <!-- Use ContentView for padding and background color -->
+                    <ContentView Padding="2" BackgroundColor="White">
+                        <!-- This acts as the border -->
+                        <Grid BackgroundColor="Green" Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding HomeTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="1" Text="vs" FontSize="50" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="2" Text="{Binding AwayTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </ContentView>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
