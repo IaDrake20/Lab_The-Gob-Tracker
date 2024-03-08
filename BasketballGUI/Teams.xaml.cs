@@ -5,13 +5,53 @@ namespace BasketballGUI;
 
 public partial class Teams : ContentPage
 {
+    public ObservableCollection<Team> MasterList { get; set; }
 	public Teams()
 	{
-		InitializeComponent();
+        MasterList = new ObservableCollection<Team>();
+        InitializeComponent();
+        GetTeamsAsync();
+        BindingContext = this;
 	}
 
     
+    private async Task GetTeamsAsync()
+    {
+        
+        string apiUrl = "https://localhost:7067/api/Teams";
 
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonString = await response.Content.ReadAsStringAsync();
+
+                    List<Team> TeamList = JsonConvert.DeserializeObject<List<Team>>(jsonString);
+
+                    MasterList.Clear();
+                    foreach(Team team in TeamList)
+                    {
+                        MasterList.Add(team);
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("API request failed with status code:" + response.StatusCode);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error: " + ex.Message);
+
+            }
+        }
+    }
     private async void btnNewTeam_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new CreateTeam());

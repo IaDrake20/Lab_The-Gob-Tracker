@@ -36,22 +36,16 @@
                    Grid.ColumnSpan="7"
                 />
 
-        <Picker x:Name="homePicker"                
-        Grid.Column ="1"
-        Grid.ColumnSpan="5"
-        Grid.Row="1"
-        Grid.RowSpan="1"
-        FontSize="25"
-                >
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Team1</x:String>
-                    <x:String>Team2</x:String>
-                    <x:String>Team3</x:String>
-                    <x:String>Team4</x:String>
-                    <x:String>Team5</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
+        <Picker 
+            ItemsSource="{Binding MasterList}"
+            SelectedItem="{Binding SelectedTeam}"
+            ItemDisplayBinding="{Binding Name}"
+            x:Name="homePicker"                
+            Grid.Column ="1"
+            Grid.ColumnSpan="5"
+            Grid.Row="1"
+            Grid.RowSpan="1"
+            FontSize="25">
         </Picker>
 
 
