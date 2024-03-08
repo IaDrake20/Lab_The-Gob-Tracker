@@ -8,9 +8,11 @@ public partial class PlayerPage : ContentPage
 {
     public ObservableCollection<TeamRoster> MasterList { get; set; }
     public TeamRoster SelectedPlayer { get; set; }
-    public PlayerPage(int id)
+    public int teamId;
+    public PlayerPage(int myId)
     {
         InitializeComponent();
+        teamId = myId;
         MasterList = new ObservableCollection<TeamRoster>();
         GetGamesAsync();
         BindingContext = this;
@@ -70,6 +72,6 @@ public partial class PlayerPage : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddPlayer(SelectedPlayer.Id));
+        await Navigation.PushAsync(new AddPlayer(teamId));
     }
 }

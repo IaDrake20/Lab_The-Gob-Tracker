@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System.Diagnostics;
+using Windows.Networking;
 
 namespace BasketballGUI;
 
@@ -14,26 +15,29 @@ public partial class AddPlayer : ContentPage
 
     private async void btnAddPlayer_Clicked(object sender, EventArgs e)
     {
-        var playerName = entry.Text; // Capture player's name from the Entry control
-        if (string.IsNullOrWhiteSpace(playerName))
+        var firstName = firstNameEntry.Text; // Capture first name
+        var lastName = lastNameEntry.Text; // Capture last name
+        if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
         {
-            // Optionally, notify the user to enter a valid name
-            await DisplayAlert("Validation", "Please enter a player's name.", "OK");
+            // Notify the user to enter both names
+            await DisplayAlert("Validation", "Please enter both first and last names.", "OK");
             return;
         }
+        // Assuming your API requires a full name, you can concatenate them or adjust as needed
+        var fullName = $"{firstName} {lastName}";
 
-        // Assuming you have a method to add a player to the team
-        await AddPlayerToTeam(teamId, playerName);
+        await AddPlayerToTeam(teamId, fullName);
 
         // Clear the entry after adding
-        entry.Text = string.Empty;
+        firstNameEntry.Text = string.Empty;
+        lastNameEntry.Text = string.Empty;
     }
 
     private async Task AddPlayerToTeam(int teamId, string playerName)
     {
         // Implementation depends on how you're storing and managing data
         // For example, sending a POST request to a REST API
-        var newPlayer = new { Name = playerName, TeamId = teamId };
+        var newPlayer = new { FullName = playerName, TeamId = teamId };
         string apiUrl = "https://localhost:7067/api/PlayerTeams"; // Adjust URL as necessary
 
         using (var client = new HttpClient())

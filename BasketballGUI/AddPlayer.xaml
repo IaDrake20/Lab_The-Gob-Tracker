@@ -33,12 +33,19 @@
         VerticalOptions="Center" 
         HorizontalOptions="Center" />
 
-        <Entry x:Name="entry"
+        <Entry x:Name="firstNameEntry"
            Grid.Column="1"
            Grid.Row="1"
            FontSize="25"               
            Grid.ColumnSpan="3"
-   Placeholder="Enter player" />
+   Placeholder="First Name" />
+
+        <Entry x:Name="lastNameEntry"
+        Grid.Column="2"
+        Grid.Row="1"
+        FontSize="25"               
+        Grid.ColumnSpan="3"
+Placeholder="Last Name" />
 
         <Button Text ="Add player:"
             Grid.Column="2"
