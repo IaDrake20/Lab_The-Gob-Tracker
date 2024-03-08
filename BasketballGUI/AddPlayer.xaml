@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BasketballGUI.AddPlayer"
+             Title="AddPlayer">
+    <Grid ColumnSpacing="10" RowSpacing="10">
+        <Grid.RowDefinitions>
+
+            <!--Each creates a row with auto sizing or a height if specified-->
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--Each created a column with auto sizing or a width if specified-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label
+        Grid.Column="1"
+        Grid.ColumnSpan="3"
+        FontSize="25"
+        Text="Please enter a player name:"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+
+        <Entry x:Name="entry"
+           Grid.Column="1"
+           Grid.Row="1"
+           FontSize="25"
+           Grid.ColumnSpan="3"
+   Placeholder="Enter player" />
+
+        <Button Text ="Add player:"
+            Grid.Column="2"
+            Grid.ColumnSpan="1"
+            Grid.Row="3"
+            FontSize="25"
+            x:Name="btnAddPlayer"
+            Clicked="btnAddPlayer_Clicked"
+            Pressed="btnPressed"
+            Released="btnReleased"/>
+
+        <Button Text ="Finish"
+            Grid.Column="2"
+            Grid.ColumnSpan="1"
+            Grid.Row="4"
+            FontSize="25"
+            x:Name="btnFinish"
+            Clicked="btnFinish_Clicked"
+            Pressed="btnPressed"
+            Released="btnReleased"/>
+    </Grid>
+</ContentPage>

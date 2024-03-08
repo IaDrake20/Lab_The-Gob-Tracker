@@ -1,11 +1,17 @@
 namespace BasketballGUI;
 
-public partial class CreateTeam : ContentPage
+public partial class AddPlayer : ContentPage
 {
-	public CreateTeam()
+	public AddPlayer()
 	{
 		InitializeComponent();
 	}
+
+    private void btnAddPlayer_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
     private void btnPressed(object sender, EventArgs e)
     {
         var button = sender as Button;
@@ -27,8 +33,8 @@ public partial class CreateTeam : ContentPage
     public Color originalColor = Colors.Red;
     public Color clickColor = Colors.White;
 
-    private async void btnAddTeam_Clicked(object sender, EventArgs e)
+    private void btnFinish_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddPlayer());
+
     }
 }

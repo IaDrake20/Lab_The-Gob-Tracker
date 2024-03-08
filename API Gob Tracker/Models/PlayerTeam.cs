@@ -5,7 +5,7 @@ namespace API_Gob_Tracker.Models;
 
 public partial class PlayerTeam
 {
-    public int Id { get; set; }
+    public int Id { get; internal set; }
 
     public int PlayerId { get; set; }
 

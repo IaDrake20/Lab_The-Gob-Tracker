@@ -13,6 +13,9 @@ public partial class Game
 
     public DateTimeOffset DateTimeId { get; set; }
 
+    public int Quarter {  get; set; }
+    public int Half { get; set; }
+
     //public virtual ICollection<SeasonStat> Stats { get; set; } = new List<SeasonStat>();
 
     //public virtual Team Team1 { get; set; } = null!;
