@@ -33,8 +33,8 @@ public partial class AddPlayer : ContentPage
     public Color originalColor = Colors.Red;
     public Color clickColor = Colors.White;
 
-    private void btnFinish_Clicked(object sender, EventArgs e)
+    private async void btnFinish_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PopAsync();
     }
 }

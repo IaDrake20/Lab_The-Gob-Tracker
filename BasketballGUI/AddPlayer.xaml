@@ -49,7 +49,7 @@
                 CornerRadius="60"
             Clicked="btnAddPlayer_Clicked"
             Pressed="btnPressed"
-                BackgroundColor="DimGray"
+                BackgroundColor="DarkOliveGreen"
 TextColor="White"
             Released="btnReleased"/>
 
@@ -62,7 +62,7 @@ TextColor="White"
             x:Name="btnFinish"
             Clicked="btnFinish_Clicked"
             Pressed="btnPressed"
-                BackgroundColor="Green"
+                BackgroundColor="DarkRed"
 TextColor="White"
             Released="btnReleased"/>
     </Grid>

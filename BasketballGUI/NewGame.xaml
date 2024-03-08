@@ -91,7 +91,7 @@
                 Grid.Row="7"
                 Pressed="btnPressed"
                 Released="btnReleased"
-                BackgroundColor="Green"
+                BackgroundColor="DarkRed"
                 TextColor="White"
                 />
         
@@ -105,7 +105,7 @@
                 Grid.Row="3"
                 Pressed="btnPressed"
                 Released="btnReleased"
-                BackgroundColor="DimGray"
+                BackgroundColor="DarkOliveGreen"
 TextColor="White"
         />
     </Grid>

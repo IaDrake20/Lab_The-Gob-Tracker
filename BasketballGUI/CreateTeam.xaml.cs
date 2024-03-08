@@ -79,4 +79,9 @@ public partial class CreateTeam : ContentPage
     {
         await Navigation.PushAsync(new AddPlayer());
     }
+
+    private async void btnFinished_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

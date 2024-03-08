@@ -9,9 +9,11 @@
             <!--Each creates a row with auto sizing or a height if specified-->
             <RowDefinition />
             <RowDefinition />
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="10" />
             <RowDefinition />
+            <RowDefinition Height="25" />
             <RowDefinition />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
         <!--Each created a column with auto sizing or a width if specified-->
@@ -22,7 +24,7 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
+
         <Label
             Grid.Column="1"
             Grid.ColumnSpan="3"
@@ -44,10 +46,23 @@
                 Grid.ColumnSpan="1"
                 Grid.Row="3"
                 FontSize="25"
-                BackgroundColor="Green"
+                BackgroundColor="DarkOliveGreen"
 TextColor="White"
                 x:Name="btnAddTeam"
                 Clicked="btnAddTeam_Clicked"
+                Pressed="btnPressed"
+                Released="btnReleased"/>
+
+        <Button Text ="Finished"
+                Grid.Column="2"
+                CornerRadius="55"
+                Grid.ColumnSpan="1"
+                Grid.Row="5"
+                FontSize="25"
+                BackgroundColor="DarkRed"
+            TextColor="White"
+                x:Name="btnFinished"
+                Clicked="btnFinished_Clicked"
                 Pressed="btnPressed"
                 Released="btnReleased"/>
     </Grid>
