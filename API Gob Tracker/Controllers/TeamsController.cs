@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API_Gob_Tracker.Models;
+using Azure;
+using System.Diagnostics;
+using static NuGet.Packaging.PackagingConstants;
 
 namespace API_Gob_Tracker.Controllers
 {
@@ -77,8 +80,23 @@ namespace API_Gob_Tracker.Controllers
         [HttpPost]
         public async Task<ActionResult<Team>> PostTeam(Team team)
         {
+            Debug.WriteLine(team.Name);
             _context.Teams.Add(team);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (TeamExists(team.Id))
+                {
+                    Debug.WriteLine("error1");
+                }
+                else
+                {
+                    Debug.WriteLine("error2");
+                }
+            }
 
             return CreatedAtAction("GetTeam", new { id = team.Id }, team);
         }
