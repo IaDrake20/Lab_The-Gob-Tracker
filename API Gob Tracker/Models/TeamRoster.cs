@@ -13,8 +13,6 @@ public partial class TeamRoster
 
     public int TeamID { get; set; }
 
-    public int PlayerTeamID { get; set; }
-
     public int PlayerID { get; set; }
 
     public int Id { get; set; }
