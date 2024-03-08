@@ -75,6 +75,6 @@ public partial class CreateTeam : ContentPage
 
     private async void btnFinished_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopAsync();
+        await Navigation.PushAsync(new Teams());
     }
 }

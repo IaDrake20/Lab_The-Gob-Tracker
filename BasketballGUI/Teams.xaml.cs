@@ -102,6 +102,6 @@ public partial class Teams : ContentPage
 
     private async void btnBack_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopAsync();
+        await Navigation.PushAsync(new MainMenu());
     }
 }

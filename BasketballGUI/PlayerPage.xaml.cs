@@ -38,7 +38,10 @@ public partial class PlayerPage : ContentPage
 
                     foreach (TeamRoster player in games)
                     {
-                        MasterList.Add(player);
+                        if (player.TeamID == teamId)
+                        {
+                            MasterList.Add(player);
+                        }
                     }
 
                 }

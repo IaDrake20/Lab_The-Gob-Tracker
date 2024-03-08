@@ -104,7 +104,7 @@ namespace BasketballGUI
         private async void btnFinish_Clicked(object sender, EventArgs e)
         {
             // Navigate back to the previous page
-            await Navigation.PopAsync();
+            await Navigation.PushAsync(new CreateTeam());
         }
     }
 }
