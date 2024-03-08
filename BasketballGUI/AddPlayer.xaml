@@ -48,9 +48,10 @@
             x:Name="btnAddPlayer"
                 CornerRadius="60"
             Clicked="btnAddPlayer_Clicked"
-            Pressed="btnPressed"
+            
                 BackgroundColor="DarkOliveGreen"
 TextColor="White"
+                Pressed="btnPressed"
             Released="btnReleased"/>
 
         <Button Text ="Finished"

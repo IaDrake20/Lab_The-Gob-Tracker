@@ -5,6 +5,7 @@ namespace BasketballGUI;
 
 public partial class Teams : ContentPage
 {
+    public Team SelectedTeam { get; set; }
     public ObservableCollection<Team> MasterList { get; set; }
 	public Teams()
 	{
@@ -85,7 +86,13 @@ public partial class Teams : ContentPage
 
     private async void btnAddPlayers_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new PlayerPage(0));
+        if (SelectedTeam != null)
+        {
+            var teamId = SelectedTeam.Id;
+            // Use teamId as needed, e.g., passing to another page or making an API call
+            Debug.WriteLine($"Using selected Team ID: {teamId}");
+            await Navigation.PushAsync(new PlayerPage(teamId)); // Assuming you modify PlayerPage to accept an ID
+        }
     }
 
     private async void btnSchedule_Clicked(object sender, EventArgs e)

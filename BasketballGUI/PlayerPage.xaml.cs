@@ -6,20 +6,20 @@ namespace BasketballGUI;
 
 public partial class PlayerPage : ContentPage
 {
-    public ObservableCollection<Schedule> MasterList { get; set; }
-    Schedule SelectedGame;
+    public ObservableCollection<TeamRoster> MasterList { get; set; }
+    public TeamRoster SelectedPlayer { get; set; }
     public PlayerPage(int id)
     {
         InitializeComponent();
-        MasterList = new ObservableCollection<Schedule>();
+        MasterList = new ObservableCollection<TeamRoster>();
         GetGamesAsync();
         BindingContext = this;
     }
 
     async private Task GetGamesAsync()
     {
-        MasterList = new ObservableCollection<Schedule>();
-        string apiUrl = "https://localhost:7067/api/Schedule";
+        MasterList = new ObservableCollection<TeamRoster>();
+        string apiUrl = "https://localhost:7067/api/TeamRoster";
 
         using (HttpClient client = new HttpClient())
         {
@@ -32,11 +32,11 @@ public partial class PlayerPage : ContentPage
                 {
                     string jsonString = await response.Content.ReadAsStringAsync();
 
-                    List<Schedule> games = JsonConvert.DeserializeObject<List<Schedule>>(jsonString);
+                    List<TeamRoster> games = JsonConvert.DeserializeObject<List<TeamRoster>>(jsonString);
 
-                    foreach (Schedule game in games)
+                    foreach (TeamRoster player in games)
                     {
-                        MasterList.Add(game);
+                        MasterList.Add(player);
                     }
 
                 }
@@ -63,8 +63,8 @@ public partial class PlayerPage : ContentPage
             return;
         }
 
-        SelectedGame = e.SelectedItem as Schedule;
+        SelectedPlayer = e.SelectedItem as TeamRoster;
 
-        await Navigation.PushAsync(new TeamChoice(SelectedGame.Id));
+        await Navigation.PushAsync(new TeamChoice(SelectedPlayer.Id));
     }
 }

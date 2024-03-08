@@ -71,7 +71,5 @@ public partial class ViewGame : ContentPage
         SelectedGame = e.SelectedItem as Schedule;
 
         await Navigation.PushAsync(new TeamChoice(SelectedGame.Id));
-    }
-
-     
+    }     
 }

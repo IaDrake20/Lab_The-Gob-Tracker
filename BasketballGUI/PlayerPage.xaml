@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BasketballGUI.PlayerPage"
              Title="PlayerPage">
-    <ListView ItemsSource="{Binding MasterList}" SelectedItem = "{Binding SelectedGame}" ItemSelected="OnItemSelected" VerticalOptions="Start" >
+    <ListView ItemsSource="{Binding MasterList}" SelectedItem = "{Binding FullName}" ItemSelected="OnItemSelected" VerticalOptions="Start" >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -20,9 +20,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="{Binding HomeTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
-                            <Label Grid.Column="1" Text="vs" FontSize="50" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                            <Label Grid.Column="2" Text="{Binding AwayTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="0" Text="{Binding TeamRoster}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
                             <!--<Label Grid.Column="1" Grid.Row="4" Text="DateTime" FontAttributes="None" HorizontalTextAlignment="End" FontSize="50" VerticalTextAlignment="Center"/>-->
                         </Grid>
                     </ContentView>

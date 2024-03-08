@@ -49,7 +49,9 @@
                 BackgroundColor="DarkOliveGreen"
                 TextColor="White"
                 x:Name="btnAddTeam"
-                Clicked="btnAddTeam_Clicked"/>
+                Clicked="btnAddTeam_Clicked"
+                    Pressed="btnPressed"
+Released="btnReleased"/>
 
         <Button Text ="Finished"
                 Grid.Column="2"
@@ -61,6 +63,8 @@
             TextColor="White"
                 x:Name="btnFinished"
                 Clicked="btnFinished_Clicked"
+                    Pressed="btnPressed"
+Released="btnReleased"
                 />
     </Grid>
 </ContentPage>
