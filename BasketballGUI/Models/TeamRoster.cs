@@ -10,4 +10,6 @@ public partial class TeamRoster
 
     public string Name { get; set; } = null!;
     public int Id { get; internal set; }
+
+    public string FullName => $"{Fname} {Lname}";
 }

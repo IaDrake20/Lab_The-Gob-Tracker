@@ -18,6 +18,7 @@ namespace BasketballGUI
             AwayPlayerList = new ObservableCollection<TeamRoster>();
             HomePlayerList = new ObservableCollection<TeamRoster>();
             InitializeComponent();
+            GetPlayersAsync();
         }
 
 
@@ -30,7 +31,7 @@ namespace BasketballGUI
                 Game game = await GetGameAsync(GameId);
                 try
                 {
-                    HttpResponseMessage response = await client.GetAsync(apiUrl + game.Team1);
+                    HttpResponseMessage response = await client.GetAsync(apiUrl + game.Team1Id);
 
 
                     if (response.IsSuccessStatusCode)
@@ -60,7 +61,7 @@ namespace BasketballGUI
 
                 try
                 {
-                    HttpResponseMessage response = await client.GetAsync(apiUrl + game.Team2);
+                    HttpResponseMessage response = await client.GetAsync(apiUrl + game.Team2Id);
 
 
                     if (response.IsSuccessStatusCode)
@@ -91,6 +92,7 @@ namespace BasketballGUI
 
         private async Task<Game> GetGameAsync(int gameId)
         {
+            Debug.WriteLine(gameId);
             string apiUrl = "https://localhost:7067/api/Games/" + GameId;
             Game game = new Game();
             using (HttpClient client = new HttpClient())
@@ -107,6 +109,7 @@ namespace BasketballGUI
 
                         game = JsonConvert.DeserializeObject<Game>(jsonString);
 
+                        Debug.WriteLine("Team IDs: " + game.Team1Id + "  " + game.Team2Id);
                         return game;
 
                     }
