@@ -61,7 +61,7 @@
                     TextColor="White"
                     Released="btnReleased"/>
 
-        <Button Text ="View/Edit Roster"
+        <Button Text ="View Roster"
                 Grid.Column="2"
                 Grid.ColumnSpan="3"
                 Grid.Row="3"
@@ -74,7 +74,7 @@
                 Pressed="btnPressed"
                 Released="btnReleased"/>
 
-        <Button Text ="View/Edit Schedule"
+        <Button Text ="Add players"
         Grid.Column="2"
         Grid.ColumnSpan="3"
         Grid.Row="4"

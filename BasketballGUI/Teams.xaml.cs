@@ -97,7 +97,13 @@ public partial class Teams : ContentPage
 
     private async void btnSchedule_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new TeamSchedule(homePicker.SelectedIndex));
+        if (SelectedTeam != null)
+        {
+            var teamId = SelectedTeam.Id;
+            // Use teamId as needed, e.g., passing to another page or making an API call
+            Debug.WriteLine($"Using selected Team ID: {teamId}");
+            await Navigation.PushAsync(new AddPlayer(0)); // Assuming you modify PlayerPage to accept an ID
+        }
     }
 
     private async void btnBack_Clicked(object sender, EventArgs e)

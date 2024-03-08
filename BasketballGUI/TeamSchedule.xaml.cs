@@ -7,10 +7,12 @@ namespace BasketballGUI;
 
 public partial class TeamSchedule : ContentPage
 {
+    public int teamId;
     public ObservableCollection<Schedule> MasterList { get; set; }
     Schedule SelectedGame;
     public TeamSchedule(int id)
 	{
+        teamId = id;
 		InitializeComponent();
         MasterList = new ObservableCollection<Schedule>();
         GetGamesAsync();
@@ -34,11 +36,6 @@ public partial class TeamSchedule : ContentPage
                     string jsonString = await response.Content.ReadAsStringAsync();
 
                     List<Schedule> games = JsonConvert.DeserializeObject<List<Schedule>>(jsonString);
-
-                    foreach (Schedule game in games)
-                    {
-                           MasterList.Add(game);
-                    }
 
                 }
                 else
@@ -71,6 +68,6 @@ public partial class TeamSchedule : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new NewGame());
+        await Navigation.PushAsync(new ViewGame());
     }
 }

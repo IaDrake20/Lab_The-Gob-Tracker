@@ -39,17 +39,9 @@ namespace BasketballGUI
                 {
                     Debug.WriteLine("Player added to team successfully");
                     await DisplayAlert("Success", "Player added to team successfully", "OK");
-                }
-                else
-                {
-                    Debug.WriteLine("Failed to add player to team.");
-                    await DisplayAlert("Error", "Failed to add player to team.", "OK");
-                }
+                }                
             }
-            else
-            {
-                await DisplayAlert("Error", "Failed to create player.", "OK");
-            }
+            
 
             // Clear the entry after adding
             firstNameEntry.Text = string.Empty;

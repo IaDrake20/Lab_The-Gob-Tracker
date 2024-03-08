@@ -36,21 +36,21 @@
         <Entry x:Name="firstNameEntry" 
                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
                Placeholder="First Name" 
-               FontSize="20"
+               FontSize="30"
                HorizontalOptions="Fill"/>
 
         <!-- Last Name Entry -->
         <Entry x:Name="lastNameEntry" 
                Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
                Placeholder="Last Name" 
-               FontSize="20"
+               FontSize="30"
                HorizontalOptions="Fill"/>
 
         <!-- Add Player Button -->
         <Button x:Name="btnAddPlayer" 
                 Grid.Row="3" Grid.Column="1"
                 Text="Add Player"
-                FontSize="20"
+                FontSize="40"
                 CornerRadius="10"
                 Clicked="btnAddPlayer_Clicked"
                 BackgroundColor="DarkOliveGreen"
@@ -62,7 +62,7 @@
         <Button x:Name="btnFinish"
                 Grid.Row="5" Grid.Column="1"
                 Text="Finished"
-                FontSize="20"
+                FontSize="40"
                 CornerRadius="10"
                 Clicked="btnFinish_Clicked"
                 BackgroundColor="DarkRed"
