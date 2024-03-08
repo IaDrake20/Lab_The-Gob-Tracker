@@ -92,7 +92,7 @@
                 Grid.ColumnSpan="2"
                 BackgroundColor="Green"
                 FontSize="25"
-                
+                Clicked="btnPlusOne_Clicked"
                 
                 Text="+1"
                 />
@@ -104,7 +104,7 @@
                 Grid.RowSpan="1"
                 BackgroundColor="Green"
                 FontSize="25"
-                
+                Clicked="btnPlusTwo_Clicked"
                 
                 
                 Text="+2"
@@ -117,7 +117,7 @@
                 Grid.RowSpan="1"
                 BackgroundColor="Green"
                 FontSize="25"
-                
+                Clicked="btnPlusThree_Clicked"
                 Text="+3"
         />
 
@@ -138,7 +138,7 @@
                 Grid.ColumnSpan="2"
                 BackgroundColor="Red"
                 FontSize="25"
-                
+                Clicked="btnFoul_Clicked"
                 Text="Foul"
         />
 
@@ -147,7 +147,7 @@
                 Grid.Column="5"
                 BackgroundColor="Red"
                 FontSize="25"
-                
+                Clicked="btnMissedTwo_Clicked"
                 Text="Missed 2"
 />
 
@@ -156,7 +156,7 @@
                 Grid.Column="6"
                 BackgroundColor="Red"
                 FontSize="25"
-                
+                Clicked="btnMissedThree_Clicked"
                 Text="Missed 3"
 />
 
@@ -175,7 +175,7 @@
                 x:Name="btnAssist"
                 BackgroundColor="Silver"
                 FontSize="25"
-                
+                Clicked="btnAssist_Clicked"
                 Text="Assist"
 />
 
@@ -184,7 +184,7 @@
                 x:Name="btnSteal"
                 BackgroundColor="Silver"
                 FontSize="25"
-                
+                Clicked="btnSteal_Clicked"
                 Text="Steal"
 />
         <Button Grid.Row="6"
@@ -192,7 +192,7 @@
                 x:Name="btnTurnover"
                 BackgroundColor="Silver"
                 FontSize="25"
-                
+                Clicked="btnTurnover_Clicked"
                 Text="Turnover"
         />
 
@@ -210,7 +210,7 @@
                 x:Name="btnBlock"
                 BackgroundColor="Silver"
                 FontSize="25"
-                
+                Clicked="btnBlock_Clicked"
                 Text="Block"
         />
 
@@ -219,7 +219,7 @@
                 x:Name="btnOffReb"
                 BackgroundColor="Silver"
                 FontSize="25"
-                
+                Clicked="btnOffReb_Clicked"
                 Text="OF Reb"
         />
 
@@ -228,7 +228,7 @@
                 x:Name="btnDefReb"
                 BackgroundColor="Silver"
                 FontSize="25"
-                
+                Clicked="btnDefReb_Clicked"
                 Text="DF Reb"
         />
     </Grid>
