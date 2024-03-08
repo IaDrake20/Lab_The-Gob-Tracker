@@ -92,7 +92,6 @@
                 Grid.ColumnSpan="2"
                 BackgroundColor="Green"
                 FontSize="25"
-                Clicked="btnPlusOne_Clicked"
                 
                 
                 Text="+1"
