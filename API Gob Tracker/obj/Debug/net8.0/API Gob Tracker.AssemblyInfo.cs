@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("API Gob Tracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bff0cde49d08b5407bcf723189a858d672db8aa6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ef16d672e285de158784c88a7713b0265900604")]
 [assembly: System.Reflection.AssemblyProductAttribute("API Gob Tracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("API Gob Tracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
