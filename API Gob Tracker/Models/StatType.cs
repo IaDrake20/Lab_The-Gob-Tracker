@@ -11,5 +11,5 @@ public partial class StatType
 
     public string Abrv { get; set; } = null!;
 
-    public virtual ICollection<SeasonStat> Stats { get; set; } = new List<SeasonStat>();
+    //public virtual ICollection<SeasonStat> Stats { get; set; } = new List<SeasonStat>();
 }

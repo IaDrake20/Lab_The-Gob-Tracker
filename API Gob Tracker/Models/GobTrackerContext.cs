@@ -81,6 +81,7 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.Team1Id).HasColumnName("Team1ID");
             entity.Property(e => e.Team2Id).HasColumnName("Team2ID");
 
+            /*
             entity.HasOne(d => d.Team1).WithMany(p => p.GameTeam1s)
                 .HasForeignKey(d => d.Team1Id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -90,6 +91,7 @@ public partial class GobTrackerContext : DbContext
                 .HasForeignKey(d => d.Team2Id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Team2ID");
+            */
         });
 
         modelBuilder.Entity<Player>(entity =>
@@ -115,6 +117,7 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.PlayerId).HasColumnName("PlayerID");
             entity.Property(e => e.TeamId).HasColumnName("TeamID");
 
+            /*
             entity.HasOne(d => d.Player).WithMany(p => p.PlayerTeams)
                 .HasForeignKey(d => d.PlayerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -124,6 +127,7 @@ public partial class GobTrackerContext : DbContext
                 .HasForeignKey(d => d.TeamId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PlayerTeam_Team");
+            */
         });
 
         modelBuilder.Entity<Schedule>(entity =>

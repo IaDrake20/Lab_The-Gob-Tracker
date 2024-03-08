@@ -11,9 +11,9 @@ public partial class PlayerTeam
 
     public int TeamId { get; set; }
 
-    public virtual Player Player { get; set; } = null!;
+    //public virtual Player Player { get; set; } = null!;
 
-    public virtual ICollection<SeasonStat> Stats { get; set; } = new List<SeasonStat>();
+    //public virtual ICollection<SeasonStat> Stats { get; set; } = new List<SeasonStat>();
 
-    public virtual Team Team { get; set; } = null!;
+    //public virtual Team Team { get; set; } = null!;
 }
