@@ -73,6 +73,9 @@
 	  <MauiXaml Update="PlayerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PlayerStats.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="TeamChoice.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -59,15 +59,17 @@ public partial class PlayerPage : ContentPage
 
     private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-
         if (e.SelectedItem == null)
         {
             return;
         }
 
-        SelectedPlayer = e.SelectedItem as TeamRoster;
-
-        await Navigation.PushAsync(new TeamChoice(SelectedPlayer.Id));
+        var selectedPlayer = e.SelectedItem as TeamRoster;
+        if (selectedPlayer != null)
+        {
+            // Assuming TeamRoster has Id and FullName properties
+            await Navigation.PushAsync(new PlayerStats(selectedPlayer.Id, selectedPlayer.FullName));
+        }
     }
 
     private async void Button_Clicked(object sender, EventArgs e)
