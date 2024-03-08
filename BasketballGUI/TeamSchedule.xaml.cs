@@ -68,4 +68,9 @@ public partial class TeamSchedule : ContentPage
 
         await Navigation.PushAsync(new TeamChoice(SelectedGame.Id));
     }
+
+    private async void Button_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new NewGame());
+    }
 }

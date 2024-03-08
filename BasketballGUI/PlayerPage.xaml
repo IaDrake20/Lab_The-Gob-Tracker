@@ -2,26 +2,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BasketballGUI.PlayerPage"
              Title="Player Page">
-    <!-- Use VerticalStackLayout to organize the ListView and the Button -->
     <VerticalStackLayout>
-
-        <!-- ListView occupies most of the space -->
         <ListView ItemsSource="{Binding MasterList}" SelectedItem="{Binding SelectedPlayer}" ItemSelected="OnItemSelected" VerticalOptions="FillAndExpand">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ContentView Padding="2" BackgroundColor="Black">
-                            <Grid BackgroundColor="DarkOliveGreen" Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <!-- Adjust the binding here to your correct property name -->
-                                <Label Grid.Column="1" Text="{Binding FullName}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="20" VerticalTextAlignment="Center"/>
+                            <Grid BackgroundColor="DarkOliveGreen" Padding="0">
+                                <!-- Only one row and column are necessary -->
+                                <Label Text="{Binding FullName}" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="40" BackgroundColor="DarkOliveGreen"/>
                             </Grid>
                         </ContentView>
                     </ViewCell>
@@ -29,8 +18,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <!-- Button at the bottom -->
-        <Button Text="Add New Player" Clicked="Button_Clicked"  />
-
+        <Button Text="Add New Player" Clicked="Button_Clicked" BackgroundColor="DarkSlateGray" TextColor="White" FontSize="30" />
     </VerticalStackLayout>
-    </ContentPage>
+</ContentPage>

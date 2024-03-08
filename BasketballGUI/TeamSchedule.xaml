@@ -1,33 +1,26 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BasketballGUI.TeamSchedule"
-             Title="Team Schedule:">
-    <ListView ItemsSource="{Binding MasterList}" SelectedItem = "{Binding SelectedGame}" ItemSelected="OnItemSelected" VerticalOptions="Start" >
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <!-- Use ContentView for padding and background color -->
-                    <ContentView Padding="2" BackgroundColor="Black">
-                        <!-- This acts as the border -->
-                        <Grid BackgroundColor="DarkOliveGreen" Padding="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="{Binding HomeTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
-                            <Label Grid.Column="1" Text="vs" FontSize="50" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                            <Label Grid.Column="2" Text="{Binding AwayTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
-                            <!--<Label Grid.Column="1" Grid.Row="4" Text="DateTime" FontAttributes="None" HorizontalTextAlignment="End" FontSize="50" VerticalTextAlignment="Center"/>-->
-                        </Grid>
-                    </ContentView>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+             Title="Team Schedule">
+    <VerticalStackLayout>
+        <ListView ItemsSource="{Binding MasterList}" SelectedItem="{Binding SelectedPlayer}" ItemSelected="OnItemSelected" VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ContentView Padding="2" BackgroundColor="Black">
+                            <Grid BackgroundColor="DarkOliveGreen" Padding="0">
+                                <!-- Only one row and column are necessary -->
+                                <Label Grid.Column="0" Text="{Binding HomeTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="1" Text="vs" FontSize="50" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="2" Text="{Binding AwayTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="1" Grid.Row="4" Text="{Binding DateTimeId, StringFormat='{}{0:HH:mm}'}" FontAttributes="None" HorizontalTextAlignment="End" FontSize="50" VerticalTextAlignment="Center"/>
+                            </Grid>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Text="New Game" Clicked="Button_Clicked"  BackgroundColor="DarkSlateGray" TextColor="White" FontSize="30" />
+    </VerticalStackLayout>
 </ContentPage>
