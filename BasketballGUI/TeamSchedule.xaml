@@ -9,11 +9,20 @@
                     <ViewCell>
                         <ContentView Padding="2" BackgroundColor="Black">
                             <Grid BackgroundColor="DarkOliveGreen" Padding="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
                                 <!-- Only one row and column are necessary -->
-                                <Label Grid.Column="0" Text="{Binding HomeTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
-                                <Label Grid.Column="1" Text="vs" FontSize="50" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <Label Grid.Column="2" Text="{Binding AwayTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
-                                <Label Grid.Column="1" Grid.Row="4" Text="{Binding DateTimeId, StringFormat='{}{0:HH:mm}'}" FontAttributes="None" HorizontalTextAlignment="End" FontSize="50" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="0" Text="{Binding HomeTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="40" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="1" Text="vs" FontSize="40" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="2" Text="{Binding AwayTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="40" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="1" Grid.Row="2" Text="{Binding DateTimeId, StringFormat='{}{0:HH:mm}'}" FontAttributes="None" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
                             </Grid>
                         </ContentView>
                     </ViewCell>
