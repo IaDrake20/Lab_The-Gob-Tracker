@@ -31,7 +31,7 @@
                   Grid.RowSpan="4"/>
 
         
-        <Button Text="View Stats"
+        <Button Text="Teams"
                 x:Name="btnTeams"
                 Clicked="btnTeams_Clicked"
                 Grid.Column="2"
@@ -54,10 +54,10 @@
                 Pressed="btnPressed"
                 Released="btnReleased"
                 BackgroundColor="DimGray"
-TextColor="White"
+                TextColor="White"
         />
 
-        <Button Text="View Game"
+        <Button Text="Today's Games"
                 x:Name="btnViewGame"
                 Clicked="btnViewGame_Clicked"
                 Grid.Column="2"

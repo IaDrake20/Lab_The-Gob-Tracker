@@ -3,26 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BasketballGUI.Teams"
              Title="Teams">
-        <Grid RowSpacing="20">
+        <Grid RowSpacing="20" ColumnSpacing="10">
             <Grid.RowDefinitions>
 
                 <!--Each creates a row with auto sizing or a height if specified-->
                 <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="20"/>
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
-                <RowDefinition />
-            <RowDefinition />
 
         </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="0"/>
             <ColumnDefinition />
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="63"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition />
             <ColumnDefinition Width="75" />
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="0"/>
             </Grid.ColumnDefinitions>
 
             <Label Text ="Select Team"
@@ -30,11 +31,11 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
                     Grid.Column="0"
-                   Grid.ColumnSpan="4"
+                   Grid.ColumnSpan="6"
                 />
 
         <Picker x:Name="homePicker"                
-        Grid.Column ="0"
+        Grid.Column ="1"
         Grid.ColumnSpan="4"
         Grid.Row="1"
         Grid.RowSpan="1"
@@ -53,26 +54,29 @@
 
 
         <Button Text ="+"
-                    Grid.Column="4"
+                Grid.Row="1"
+                    Grid.Column="5"
                     FontSize="25"
                     x:Name="btnNewTeam"
                     Clicked="btnNewTeam_Clicked"
-                Pressed="btnPressed"
-                BackgroundColor="DimGray"
-TextColor="White"
-            Released="btnReleased"/>
+                    CornerRadius="25"
+                    Pressed="btnPressed"
+                    BackgroundColor="DimGray"
+                    TextColor="White"
+                    Released="btnReleased"/>
 
         <Button Text ="View Stats"
-            Grid.Column="2"
+                Grid.Column="3"
                 Grid.ColumnSpan="1"
                 Grid.Row="3"
-            FontSize="25"
-            x:Name="btnViewStats"
+                CornerRadius="40"
+                FontSize="25"
+                x:Name="btnViewStats"
                 BackgroundColor="DimGray"
-TextColor="White"
-            Clicked="btnViewStats_Clicked"
+        TextColor="White"
+                Clicked="btnViewStats_Clicked"
                 Pressed="btnPressed"
-            Released="btnReleased"/>
+                Released="btnReleased"/>
 
     </Grid>
 </ContentPage>
