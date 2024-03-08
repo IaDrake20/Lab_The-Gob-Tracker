@@ -10,6 +10,7 @@ namespace BasketballGUI
     public partial class AddPlayer : ContentPage
     {
         private int teamId;
+        public int PlayerId { get; set; }
 
         public AddPlayer(int teamID)
         {
@@ -57,7 +58,7 @@ namespace BasketballGUI
         private async Task<int> MakePlayer(string firstName, string lastName)
         {
             string apiUrl = "https://localhost:7067/api/Players";
-            PlayerDTO newPlayer = new PlayerDTO();
+            var newPlayer = new PlayerDTO { FirstName = firstName, LastName = lastName };
             using (var client = new HttpClient())
             {
                 var json = JsonConvert.SerializeObject(newPlayer);
@@ -67,12 +68,24 @@ namespace BasketballGUI
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    // Assuming the API returns the player's ID as an integer
-                    int playerId = JsonConvert.DeserializeObject<int>(responseContent);
-                    return playerId;
+                    // Assuming the API returns just the PlayerId as an integer within the response content
+                    try
+                    {
+                        var playerResponse = JsonConvert.DeserializeObject<PlayerResponseDTO>(responseContent);
+                        return playerResponse.PlayerId; // Return the playerId from the deserialized object
+                    }
+                    catch (JsonException ex)
+                    {
+                        Debug.WriteLine($"JSON parsing error: {ex.Message}");
+                        return -1; // Indicate failure due to parsing error
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine($"Failed to create player. Status code: {response.StatusCode}");
+                    return -1; // Indicate failure due to non-success status code
                 }
             }
-            return -1; // Indicate failure
         }
 
         private async Task<bool> AddPlayerToTeam(int teamId, int playerId)

@@ -1,8 +1,11 @@
-﻿using System.Security.Policy;
+﻿using Newtonsoft.Json;
+using System.Security.Policy;
 
 
     public class PlayerDTO
     {
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
+    [JsonProperty("FName")]
+    public string FirstName { get; set; } = string.Empty;
+    [JsonProperty("LName")]
+    public string LastName { get; set; } = string.Empty;
     }
