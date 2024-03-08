@@ -6,8 +6,8 @@ namespace BasketballGUI
 {
     public partial class LiveEnterStats : ContentPage
     {
-        public ObservableCollection<TeamRoster> AwayPlayerList;
-        public ObservableCollection<TeamRoster> HomePlayerList;
+        public ObservableCollection<TeamRoster> AwayPlayerList { get; set; }
+        public ObservableCollection<TeamRoster> HomePlayerList { get; set; }
         public int GameId;
         public Color originalColor = Colors.Red;
         public Color clickColor = Colors.White;
@@ -18,7 +18,10 @@ namespace BasketballGUI
             AwayPlayerList = new ObservableCollection<TeamRoster>();
             HomePlayerList = new ObservableCollection<TeamRoster>();
             InitializeComponent();
+            BindingContext = this;
             GetPlayersAsync();
+            GetTeamsAsync();
+
         }
 
 
@@ -40,8 +43,10 @@ namespace BasketballGUI
 
                         List<TeamRoster> roster = JsonConvert.DeserializeObject<List<TeamRoster>>(jsonString);
 
+
                         foreach(TeamRoster player in roster)
                         {
+                            Debug.WriteLine(player.FullName);
                             HomePlayerList.Add(player);
                         }
 
@@ -79,6 +84,65 @@ namespace BasketballGUI
                     {
                         Debug.WriteLine("API request failed with status code:" + response.StatusCode);
 
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error: " + ex.Message);
+
+                }
+            }
+        }
+
+        private async Task GetTeamsAsync()
+        {
+
+
+
+
+            string apiUrl = "https://localhost:7067/api/Teams/";
+            Game game = await GetGameAsync(GameId);
+            using (HttpClient client = new HttpClient())
+            {
+
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl + game.Team1Id);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonString = await response.Content.ReadAsStringAsync();
+
+                        Team team = JsonConvert.DeserializeObject<Team>(jsonString);
+                        lblHomeTeam.Text = team.Name;
+                    }
+                    else
+                    {
+                        Debug.WriteLine("API request failed with status code:" + response.StatusCode);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error: " + ex.Message);
+
+                }
+
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl + game.Team2Id);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonString = await response.Content.ReadAsStringAsync();
+
+                        Team team = JsonConvert.DeserializeObject<Team>(jsonString);
+                        lblAwayTeam.Text = team.Name;
+                    }
+                    else
+                    {
+                        Debug.WriteLine("API request failed with status code:" + response.StatusCode);
                     }
                 }
                 catch (Exception ex)
@@ -127,13 +191,12 @@ namespace BasketballGUI
             }
         }
 
-        private void btnPlusOne_Clicked(object sender, EventArgs e)
+        /*private void btnPlusOne_Clicked(object sender, EventArgs e)
         {
-            
             
         }
 
-        /*private void btnPlusTwo_Clicked(object sender, EventArgs e)
+        private void btnPlusTwo_Clicked(object sender, EventArgs e)
         {
             checkTeam();
             if (awayTeam)
@@ -214,7 +277,7 @@ namespace BasketballGUI
             clearNames();
         }
 
-        *//*private void btnPeriod_Clicked(object sender, EventArgs e)
+        private void btnPeriod_Clicked(object sender, EventArgs e)
         {
             checkTeam();
             if (intPeriod == 4)
@@ -228,7 +291,7 @@ namespace BasketballGUI
 
             lblPeriod.Text = "Q" + intPeriod;
             clearNames();
-        }*//*
+        }
 
         private void btnBlock_Clicked(object sender, EventArgs e)
         {
@@ -251,7 +314,7 @@ namespace BasketballGUI
             clearNames();
         }
 
-        *//*public void clearNames()
+        public void clearNames()
         {
             homePicker.SelectedIndex = -1;
             awayPicker.SelectedIndex = -1;
@@ -270,7 +333,7 @@ namespace BasketballGUI
             {
                 awayTeam = true;
             }
-        }*//*
+        }
 
         private void btnPressed(object sender, EventArgs e)
         {
@@ -291,10 +354,10 @@ namespace BasketballGUI
             }
         }*/
 
-       // private async void selectPlayer()
-       // {
-           // var playerSelectionPage = new PlayerSelectionPage();
-           // await Navigation.PushModalAsync(playerSelectionPage);
-       // }
+        // private async void selectPlayer()
+        // {
+        // var playerSelectionPage = new PlayerSelectionPage();
+        // await Navigation.PushModalAsync(playerSelectionPage);
+        // }
     }
 }
