@@ -1,11 +1,15 @@
+using System.Runtime.CompilerServices;
+
 namespace BasketballGUI;
 
 public partial class MainMenu : ContentPage
-{  
+{
+    IConnectivity connectivity;
 
-    public MainMenu()
+    public MainMenu(IConnectivity connectivity)
 	{
 		InitializeComponent();
+        this.connectivity = connectivity;
 	}
 
     private void btnQuit_Clicked(object sender, EventArgs e)
@@ -20,7 +24,7 @@ public partial class MainMenu : ContentPage
 
     async private void btnTeams_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Teams());
+        await Navigation.PushAsync(new Teams(this.connectivity));
     }
 
     private async void btnViewGame_Clicked(object sender, EventArgs e)
