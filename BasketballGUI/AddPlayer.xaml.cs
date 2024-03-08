@@ -28,8 +28,9 @@ namespace BasketballGUI
                 await DisplayAlert("Validation", "Please enter both first and last names.", "OK");
                 return;
             }
-
+            
             int playerId = await MakePlayer(firstName, lastName);
+            Console.WriteLine(playerId);
             if (playerId != -1)
             {
                 bool success = await AddPlayerToTeam(teamId, playerId);
