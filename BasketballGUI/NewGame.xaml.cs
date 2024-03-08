@@ -37,4 +37,9 @@ public partial class NewGame : ContentPage
             button.BackgroundColor = originalColor;
         }
     }
+
+    private void btnSaveForLater_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }

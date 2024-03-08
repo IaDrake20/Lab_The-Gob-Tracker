@@ -27,7 +27,7 @@ public partial class MainMenu : ContentPage
 
     private async void btnViewGame_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new LiveGame());
+        await Navigation.PushAsync(new ViewGame());
     }
 
     private void btnPressed(object sender, EventArgs e)
