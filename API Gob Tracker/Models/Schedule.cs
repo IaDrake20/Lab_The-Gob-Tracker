@@ -10,5 +10,6 @@ public partial class Schedule
     public string AwayTeam { get; set; } = null!;
 
     public DateTimeOffset DateTimeId { get; set; }
-    public int Id { get; internal set; }
+
+    public int Id { get; set; }
 }

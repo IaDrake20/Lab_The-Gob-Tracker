@@ -39,7 +39,7 @@ namespace API_Gob_Tracker.Controllers
             }
 
             //LINQ
-            var resultPlayerStats = pstats.Where(x => x.Id == id).ToList();
+            var resultPlayerStats = pstats.Where(x => x.PlayerId == id).ToList();
 
             return resultPlayerStats;
         }
