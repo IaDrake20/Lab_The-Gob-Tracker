@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BasketballGUI.MainMenu"
+            
              Title="Main Menu">
 
 
@@ -39,7 +40,8 @@
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
-                BackgroundColor="DeepSkyBlue"
+                BackgroundColor="DimGray"
+                TextColor="White"
                 />
 
         <Button Text="New Game"
@@ -51,7 +53,8 @@
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
-                BackgroundColor="DeepSkyBlue"
+                BackgroundColor="DimGray"
+TextColor="White"
         />
 
         <Button Text="View Game"
@@ -63,7 +66,8 @@
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
-                BackgroundColor="DeepSkyBlue"
+                BackgroundColor="DimGray"
+TextColor="White"
         />
 
         <Button Text="Quit"
@@ -75,7 +79,8 @@
                 CornerRadius="60"
                 Pressed="btnPressed"
                 Released="btnReleased"
-                BackgroundColor="DeepSkyBlue"
+                BackgroundColor="DimGray"
+TextColor="White"
                 />
 
     </Grid>

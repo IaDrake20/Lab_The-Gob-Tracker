@@ -9,16 +9,18 @@
             <!--Each creates a row with auto sizing or a height if specified-->
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition Height="10" />
             <RowDefinition />
+            <RowDefinition Height="25" />
             <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
         <!--Each created a column with auto sizing or a width if specified-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -26,7 +28,7 @@
         <Label
         Grid.Column="1"
         Grid.ColumnSpan="3"
-        FontSize="25"
+        FontSize="32"
         Text="Please enter a player name:"
         VerticalOptions="Center" 
         HorizontalOptions="Center" />
@@ -34,7 +36,7 @@
         <Entry x:Name="entry"
            Grid.Column="1"
            Grid.Row="1"
-           FontSize="25"
+           FontSize="25"               
            Grid.ColumnSpan="3"
    Placeholder="Enter player" />
 
@@ -44,18 +46,24 @@
             Grid.Row="3"
             FontSize="25"
             x:Name="btnAddPlayer"
+                CornerRadius="60"
             Clicked="btnAddPlayer_Clicked"
             Pressed="btnPressed"
+                BackgroundColor="DimGray"
+TextColor="White"
             Released="btnReleased"/>
 
-        <Button Text ="Finish"
+        <Button Text ="Finished"
             Grid.Column="2"
             Grid.ColumnSpan="1"
-            Grid.Row="4"
+            Grid.Row="5"
             FontSize="25"
+                CornerRadius="60"
             x:Name="btnFinish"
             Clicked="btnFinish_Clicked"
             Pressed="btnPressed"
+                BackgroundColor="Green"
+TextColor="White"
             Released="btnReleased"/>
     </Grid>
 </ContentPage>

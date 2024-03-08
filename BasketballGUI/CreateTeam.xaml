@@ -9,7 +9,7 @@
             <!--Each creates a row with auto sizing or a height if specified-->
             <RowDefinition />
             <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="40"/>
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -18,7 +18,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -26,7 +26,7 @@
         <Label
             Grid.Column="1"
             Grid.ColumnSpan="3"
-            FontSize="25"
+            FontSize="32"
             Text="Please enter a team name:"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
@@ -40,9 +40,12 @@
 
         <Button Text ="Create Team"
                 Grid.Column="2"
+                CornerRadius="55"
                 Grid.ColumnSpan="1"
                 Grid.Row="3"
                 FontSize="25"
+                BackgroundColor="Green"
+TextColor="White"
                 x:Name="btnAddTeam"
                 Clicked="btnAddTeam_Clicked"
                 Pressed="btnPressed"

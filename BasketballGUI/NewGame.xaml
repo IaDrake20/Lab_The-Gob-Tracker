@@ -92,6 +92,7 @@
                 Pressed="btnPressed"
                 Released="btnReleased"
                 BackgroundColor="Green"
+                TextColor="White"
                 />
         
         <Button Text="Create New Team"
@@ -104,7 +105,8 @@
                 Grid.Row="3"
                 Pressed="btnPressed"
                 Released="btnReleased"
-                BackgroundColor="DeepSkyBlue"
+                BackgroundColor="DimGray"
+TextColor="White"
         />
     </Grid>
 </ContentPage>
