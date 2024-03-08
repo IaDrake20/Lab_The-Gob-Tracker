@@ -82,8 +82,6 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.DateTimeId).HasColumnName("DateTimeID");
             entity.Property(e => e.Team1Id).HasColumnName("Team1ID");
             entity.Property(e => e.Team2Id).HasColumnName("Team2ID");
-            entity.Property(e => e.Half).HasColumnName("Half");
-            entity.Property(e => e.Quarter).HasColumnName("Quarter");
 
             /*
             entity.HasOne(d => d.Team1).WithMany(p => p.GameTeam1s)
@@ -156,10 +154,9 @@ public partial class GobTrackerContext : DbContext
                 .HasNoKey()
                 .ToView("ScoringStats");
 
-            entity.Property(e => e.GameID).HasColumnName("AwayTeamID");
-            entity.Property(e => e.TeamID).HasColumnName("HomeTeamID");
+            entity.Property(e => e.GameID).HasColumnName("GameID");
+            entity.Property(e => e.TeamID).HasColumnName("TeamID");
             entity.Property(e => e.TotalPtsMade).HasColumnType("decimal(38, 4)");
-           
         });
 
         modelBuilder.Entity<SeasonStat>(entity =>
@@ -268,8 +265,7 @@ public partial class GobTrackerContext : DbContext
                 .HasMaxLength(10)
                 .IsFixedLength()
                 .HasColumnName("FName");
-            entity.Property(e => e.TeamID).HasColumnName("TeamID");
-            entity.Property(e => e.PlayerID).HasColumnName("PlayerID");
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Lname)
                 .HasMaxLength(10)
                 .IsFixedLength()
@@ -277,7 +273,8 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.PlayerTeamID).HasColumnName("PlayerTeamID");
+            entity.Property(e => e.PlayerId).HasColumnName("PlayerID");
+            entity.Property(e => e.TeamId).HasColumnName("TeamID");
         });
 
         OnModelCreatingPartial(modelBuilder);
