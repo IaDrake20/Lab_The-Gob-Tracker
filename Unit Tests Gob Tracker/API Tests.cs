@@ -50,5 +50,46 @@ namespace Unit_Tests_Gob_Tracker
             Assert.Equal("-43", team.TeamId.ToString());
 
         }
+
+        [Fact]
+        public void API_SeasonStat_GetsSets_Success()
+        {
+            var stat = new SeasonStat();
+            stat.Id = 9000;
+            stat.GameId = 86587;
+            stat.Total2PtsMade = -43;
+            stat.Total3PtsMade = -43;
+            stat.Fname = "hi";
+            stat.Lname = "gh";
+
+
+            Assert.Equal("9000", stat.Id.ToString());
+            Assert.Equal("86587", stat.GameId.ToString());
+            Assert.Equal("-43", stat.Total2PtsMade.ToString());
+            Assert.Equal("-43", stat.Total3PtsMade.ToString());
+            Assert.Equal("hi", stat.Fname.ToString());
+            Assert.Equal("gh", stat.Lname.ToString());
+        }
+
+        [Fact]
+        public void API_StatType_GetsSets_Success()
+        {
+            var statT = new StatType();
+            statT.Id = -28378;
+            statT.Name = "hi";
+            statT.Abrv = "something sporty";
+
+
+
+            Assert.Equal("-28378", statT.Id.ToString());
+            Assert.Equal("hi", statT.Name.ToString());
+            Assert.Equal("something sporty", statT.Abrv.ToString());
+        }
+
+        [Fact]
+        public void API_Teams_GetsSets_Success()
+        {
+            //TODO
+        }
     }
 }
