@@ -1,3 +1,6 @@
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 namespace BasketballGUI;
 
 public partial class Teams : ContentPage
@@ -6,6 +9,8 @@ public partial class Teams : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    
 
     private async void btnNewTeam_Clicked(object sender, EventArgs e)
     {

@@ -448,3 +448,5 @@ API Gob Tracker/obj/Debug/net8.0/API Gob Tracker.GeneratedMSBuildEditorConfig.ed
 API Gob Tracker/obj/Debug/net8.0/API Gob Tracker.GlobalUsings.g.cs
 API Gob Tracker/obj/project.assets.json
 API Gob Tracker/obj/project.nuget.cache
+API Gob Tracker/Properties/serviceDependencies.local.json
+API Gob Tracker/Properties/serviceDependencies.json
