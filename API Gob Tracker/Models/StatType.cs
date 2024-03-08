@@ -5,7 +5,7 @@ namespace API_Gob_Tracker.Models;
 
 public partial class StatType
 {
-    public int Id { get; set; }
+    public int Id { get; internal set; }
 
     public string Name { get; set; } = null!;
 
