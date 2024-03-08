@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
+using static Java.Util.Jar.Attributes;
 namespace BasketballGUI;
 
 public partial class CreateTeam : ContentPage
@@ -13,20 +14,27 @@ public partial class CreateTeam : ContentPage
 
     public ObservableCollection<Teams> MasterList { get; set; }
 
-    async private Task postTeamAsync()
+    async private Task postTeamAsync(int r, string n)
     {
         string apiURL = "https://localhost:7067/swagger/index.html";
         using (HttpClient client = new HttpClient())
         {
             try
             {
-                string n = "";
-                string jsonString = JsonConvert.SerializeObject(n);
+                var team = new { Ranking = r, Name = n }; 
+                string jsonString = JsonConvert.SerializeObject(team);
                 HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.PostAsync(apiURL, content);
 
-               
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Team successfully added.");
+                }
+                else
+                {
+                    Console.WriteLine("Failed to add team. Status code: " + response.StatusCode);
+                }
             }
             catch (Exception ex)
             {
@@ -34,26 +42,7 @@ public partial class CreateTeam : ContentPage
             }
         }
     }
-    async private Task putTeamAsync(String n, int r)
-    {
-        string apiURL = "https://localhost:7067/swagger/index.html";
-        using (HttpClient client = new HttpClient())
-        {
-            try
-            {
-                string jsonString = JsonConvert.SerializeObject(n);
-                HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = await client.PostAsync(apiURL, content);
-
-
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-            }
-        }
-    }
+   
     private void btnPressed(object sender, EventArgs e)
     {
         var button = sender as Button;
