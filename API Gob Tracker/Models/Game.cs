@@ -13,7 +13,7 @@ public partial class Game
 
     public DateTimeOffset DateTimeId { get; set; }
 
-    //public virtual ICollection<Stat> Stats { get; set; } = new List<Stat>();
+    public virtual ICollection<SeasonStat> Stats { get; set; } = new List<SeasonStat>();
 
     public virtual Team Team1 { get; set; } = null!;
 

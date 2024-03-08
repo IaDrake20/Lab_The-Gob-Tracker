@@ -13,7 +13,7 @@ public partial class PlayerTeam
 
     public virtual Player Player { get; set; } = null!;
 
-    public virtual ICollection<Stat> Stats { get; set; } = new List<Stat>();
+    public virtual ICollection<SeasonStat> Stats { get; set; } = new List<SeasonStat>();
 
     public virtual Team Team { get; set; } = null!;
 }
