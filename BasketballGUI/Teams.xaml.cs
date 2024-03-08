@@ -7,12 +7,15 @@ public partial class Teams : ContentPage
 {
     public Team SelectedTeam { get; set; }
     public ObservableCollection<Team> MasterList { get; set; }
-	public Teams()
+
+    IConnectivity connectivity;
+    public Teams(IConnectivity connectivity)
 	{
         MasterList = new ObservableCollection<Team>();
         InitializeComponent();
         GetTeamsAsync();
         BindingContext = this;
+        this.connectivity = connectivity;
 	}
 
     
@@ -86,6 +89,12 @@ public partial class Teams : ContentPage
 
     private async void btnAddPlayers_Clicked(object sender, EventArgs e)
     {
+        if(connectivity.NetworkAccess != NetworkAccess.Internet)
+        {
+            await Shell.Current.DisplayAlert("Error", "Internet Connection Lost!", "Ok");
+            return;
+        }
+        
         if (SelectedTeam != null)
         {
             var teamId = SelectedTeam.Id;
