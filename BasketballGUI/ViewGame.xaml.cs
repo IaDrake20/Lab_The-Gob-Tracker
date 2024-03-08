@@ -62,6 +62,7 @@ public partial class ViewGame : ContentPage
 
     private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
+        
         if(e.SelectedItem == null)
         {
             return;
@@ -69,7 +70,7 @@ public partial class ViewGame : ContentPage
 
         SelectedGame = e.SelectedItem as Schedule;
 
-        await Navigation.PushAsync(new LiveGame(SelectedGame.Id));
+        await Navigation.PushAsync(new TeamChoice(SelectedGame.Id));
     }
 
      

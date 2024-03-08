@@ -25,9 +25,11 @@ public partial class GobTrackerContext : DbContext
 
     public virtual DbSet<Schedule> Schedules { get; set; }
 
+    public virtual DbSet<ScoringStat> ScoringStats { get; set; }
+
     public virtual DbSet<SeasonStat> SeasonStats { get; set; }
 
-    public virtual DbSet<SeasonStat> Stats { get; set; }
+    public virtual DbSet<Stat> Stats { get; set; }
 
     public virtual DbSet<StatType> StatTypes { get; set; }
 
@@ -148,6 +150,19 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.Id).HasColumnName("ID");
         });
 
+        modelBuilder.Entity<ScoringStat>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("ScoringStats");
+
+            entity.Property(e => e.AwayTeamId).HasColumnName("AwayTeamID");
+            entity.Property(e => e.HomeTeamId).HasColumnName("HomeTeamID");
+            entity.Property(e => e.Total1PtsMade).HasColumnType("decimal(38, 4)");
+            entity.Property(e => e.Total2PtsMade).HasColumnType("decimal(38, 4)");
+            entity.Property(e => e.Total3PtsMade).HasColumnType("decimal(38, 4)");
+        });
+
         modelBuilder.Entity<SeasonStat>(entity =>
         {
             entity
@@ -168,16 +183,32 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.Total3PtsMade).HasColumnType("decimal(38, 4)");
         });
 
-        modelBuilder.Entity<SeasonStat>(entity =>
+        modelBuilder.Entity<Stat>(entity =>
         {
-            entity.ToTable("SeasonStat");
+            entity.ToTable("Stat");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.GameId).HasColumnName("GameID");
-            entity.Property(e => e.Fname ).HasColumnName("Fname");
-            entity.Property(e => e.Lname ).HasColumnName("Lname");
-            entity.Property(e => e.Total2PtsMade ).HasColumnType("decimal(8, 4)");
-            entity.Property(e => e.Total3PtsMade).HasColumnType("decimal(8, 4)");
+            entity.Property(e => e.PlayerTeamId).HasColumnName("PlayerTeamID");
+            entity.Property(e => e.StatTypeId).HasColumnName("StatTypeID");
+            entity.Property(e => e.StatValue).HasColumnType("decimal(8, 4)");
+
+            /*
+            entity.HasOne(d => d.Game).WithMany(p => p.Stats)
+                .HasForeignKey(d => d.GameId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Stat_Game");
+
+            entity.HasOne(d => d.PlayerTeam).WithMany(p => p.Stats)
+                .HasForeignKey(d => d.PlayerTeamId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Stat_PlayerTeam");
+
+            entity.HasOne(d => d.StatType).WithMany(p => p.Stats)
+                .HasForeignKey(d => d.StatTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Stat_Stat Type");
+            */
         });
 
         modelBuilder.Entity<StatType>(entity =>
