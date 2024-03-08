@@ -85,12 +85,12 @@ public partial class Teams : ContentPage
 
     private async void btnAddPlayers_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new PlayerPage());
+        await Navigation.PushAsync(new PlayerPage(0));
     }
 
     private async void btnSchedule_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new TeamSchedule());
+        await Navigation.PushAsync(new TeamSchedule(homePicker.SelectedIndex));
     }
 
     private async void btnBack_Clicked(object sender, EventArgs e)
