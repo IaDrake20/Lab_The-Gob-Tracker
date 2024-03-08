@@ -57,7 +57,7 @@ namespace BasketballGUI
         private async Task<int> MakePlayer(string firstName, string lastName)
         {
             string apiUrl = "https://localhost:7067/api/Players";
-            var newPlayer = new { FName = firstName, LName = lastName };
+            PlayerDTO newPlayer = new PlayerDTO();
             using (var client = new HttpClient())
             {
                 var json = JsonConvert.SerializeObject(newPlayer);
