@@ -33,6 +33,8 @@ public partial class GobTrackerContext : DbContext
 
     public virtual DbSet<StatType> StatTypes { get; set; }
 
+    public virtual DbSet<StatValsPerGame> StatValsPerGames { get; set; }
+
     public virtual DbSet<StatsPlayer> StatsPlayers { get; set; }
 
     public virtual DbSet<Team> Teams { get; set; }
@@ -207,6 +209,7 @@ public partial class GobTrackerContext : DbContext
             */
         });
 
+
         modelBuilder.Entity<StatType>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_Stat Type");
@@ -220,6 +223,20 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<StatValsPerGame>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("StatValsPerGame");
+
+            entity.Property(e => e.GameId).HasColumnName("GameID");
+            entity.Property(e => e.StatName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.StatValue).HasColumnType("decimal(8, 4)");
+            entity.Property(e => e.TeamId).HasColumnName("TeamID");
         });
 
         modelBuilder.Entity<StatsPlayer>(entity =>
@@ -265,7 +282,6 @@ public partial class GobTrackerContext : DbContext
                 .HasMaxLength(10)
                 .IsFixedLength()
                 .HasColumnName("FName");
-            entity.Property(e => e.PlayerTeamID).HasColumnName("PlayerTeamID");
             entity.Property(e => e.Lname)
                 .HasMaxLength(10)
                 .IsFixedLength()
@@ -273,10 +289,9 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-
-            entity.Property(e => e.PlayerId).HasColumnName("PlayerId");
-            entity.Property(e => e.TeamId).HasColumnName("TeamId");
-
+            entity.Property(e => e.PlayerId).HasColumnName("PlayerID");
+            entity.Property(e => e.PlayerTeamID).HasColumnName("PlayerTeamID");
+            entity.Property(e => e.TeamId).HasColumnName("TeamID");
         });
 
         OnModelCreatingPartial(modelBuilder);
