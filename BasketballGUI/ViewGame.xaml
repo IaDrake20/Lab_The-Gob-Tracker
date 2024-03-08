@@ -8,9 +8,9 @@
             <DataTemplate>
                 <ViewCell>
                     <!-- Use ContentView for padding and background color -->
-                    <ContentView Padding="2" BackgroundColor="White">
+                    <ContentView Padding="2" BackgroundColor="Black">
                         <!-- This acts as the border -->
-                        <Grid BackgroundColor="Green" Padding="10">
+                        <Grid BackgroundColor="DimGray" Padding="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
