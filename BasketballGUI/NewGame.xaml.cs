@@ -9,10 +9,10 @@ public partial class NewGame : ContentPage
 		InitializeComponent();
 	}
 
-    private async void btnStartScoring_Clicked(object sender, EventArgs e)
+    /*private async void btnStartScoring_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new LiveEnterStats());
-    }
+    }*/
 
     private async void btnNewTeam_Clicked(object sender, EventArgs e)
     {

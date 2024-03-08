@@ -1,41 +1,136 @@
-﻿namespace BasketballGUI
+﻿using Newtonsoft.Json;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+
+namespace BasketballGUI
 {
     public partial class LiveEnterStats : ContentPage
     {
-        public int awayScore = 0;
-        public int homeScore = 0;
-
-        public bool awayTeam = false;
-        public bool homeTeam = false;
-
-        public int intPeriod = 1;
-
+        public ObservableCollection<TeamRoster> AwayPlayerList;
+        public ObservableCollection<TeamRoster> HomePlayerList;
+        public int GameId;
         public Color originalColor = Colors.Red;
         public Color clickColor = Colors.White;
 
-        public LiveEnterStats()
+        public LiveEnterStats(int gameId)
         {
+            GameId = gameId;
+            AwayPlayerList = new ObservableCollection<TeamRoster>();
+            HomePlayerList = new ObservableCollection<TeamRoster>();
             InitializeComponent();
+        }
+
+
+        private async Task GetPlayersAsync()
+        {
+            string apiUrl = "https://localhost:7067/api/TeamRoster/";
+            
+            using (HttpClient client = new HttpClient())
+            {
+                Game game = await GetGameAsync(GameId);
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl + game.Team1);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonString = await response.Content.ReadAsStringAsync();
+
+                        List<TeamRoster> roster = JsonConvert.DeserializeObject<List<TeamRoster>>(jsonString);
+
+                        foreach(TeamRoster player in roster)
+                        {
+                            HomePlayerList.Add(player);
+                        }
+
+                    }
+                    else
+                    {
+                        Debug.WriteLine("API request failed with status code:" + response.StatusCode);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error: " + ex.Message);
+
+                }
+
+
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl + game.Team2);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonString = await response.Content.ReadAsStringAsync();
+
+                        List<TeamRoster> roster = JsonConvert.DeserializeObject<List<TeamRoster>>(jsonString);
+
+                        foreach (TeamRoster player in roster)
+                        {
+                            AwayPlayerList.Add(player);
+                        }
+                    }
+                    else
+                    {
+                        Debug.WriteLine("API request failed with status code:" + response.StatusCode);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error: " + ex.Message);
+
+                }
+            }
+        }
+
+
+        private async Task<Game> GetGameAsync(int gameId)
+        {
+            string apiUrl = "https://localhost:7067/api/Games/" + GameId;
+            Game game = new Game();
+            using (HttpClient client = new HttpClient())
+            {
+                
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonString = await response.Content.ReadAsStringAsync();
+
+                        game = JsonConvert.DeserializeObject<Game>(jsonString);
+
+                        return game;
+
+                    }
+                    else
+                    {
+                        Debug.WriteLine("API request failed with status code:" + response.StatusCode);
+                        return game;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error: " + ex.Message);
+                    return game;
+                }
+            }
         }
 
         private void btnPlusOne_Clicked(object sender, EventArgs e)
         {
-            //  selectPlayer();
-            checkTeam();
-            if (awayTeam)
-            {
-                awayScore++;
-                lblAwayScore.Text = "" + awayScore;
-            }
-            else if (homeTeam)
-            {
-                homeScore++;
-                lblHomeScore.Text = "" + homeScore;
-            }
-            clearNames();
+            
+            
         }
 
-        private void btnPlusTwo_Clicked(object sender, EventArgs e)
+        /*private void btnPlusTwo_Clicked(object sender, EventArgs e)
         {
             checkTeam();
             if (awayTeam)
@@ -116,7 +211,7 @@
             clearNames();
         }
 
-        private void btnPeriod_Clicked(object sender, EventArgs e)
+        *//*private void btnPeriod_Clicked(object sender, EventArgs e)
         {
             checkTeam();
             if (intPeriod == 4)
@@ -130,7 +225,7 @@
 
             lblPeriod.Text = "Q" + intPeriod;
             clearNames();
-        }
+        }*//*
 
         private void btnBlock_Clicked(object sender, EventArgs e)
         {
@@ -153,7 +248,7 @@
             clearNames();
         }
 
-        public void clearNames()
+        *//*public void clearNames()
         {
             homePicker.SelectedIndex = -1;
             awayPicker.SelectedIndex = -1;
@@ -172,7 +267,7 @@
             {
                 awayTeam = true;
             }
-        }
+        }*//*
 
         private void btnPressed(object sender, EventArgs e)
         {
@@ -191,7 +286,7 @@
             {
                 button.BackgroundColor = originalColor;
             }
-        }
+        }*/
 
        // private async void selectPlayer()
        // {

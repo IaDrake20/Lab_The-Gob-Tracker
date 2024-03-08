@@ -14,4 +14,6 @@ public partial class TeamRoster
     public int TeamID { get; set; }
 
     public int PlayerID { get; set; }
+
+    public string FullName => $"{Fname} {Lname}";
 }

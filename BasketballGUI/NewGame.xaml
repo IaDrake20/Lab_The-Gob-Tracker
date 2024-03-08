@@ -83,7 +83,7 @@
         </Picker>
         <Button Text="Start Game"
                 x:Name="btnStartScoring"
-                Clicked="btnStartScoring_Clicked"
+                
                 CornerRadius="50"
                 FontSize="40"
                 Grid.Column="2"
