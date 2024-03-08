@@ -85,6 +85,7 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.Half).HasColumnName("Half");
             entity.Property(e => e.Quarter).HasColumnName("Quarter");
 
+            /*
             entity.HasOne(d => d.Team1).WithMany(p => p.GameTeam1s)
                 .HasForeignKey(d => d.Team1Id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -94,6 +95,7 @@ public partial class GobTrackerContext : DbContext
                 .HasForeignKey(d => d.Team2Id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Team2ID");
+            */
         });
 
         modelBuilder.Entity<Player>(entity =>
@@ -119,6 +121,7 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.PlayerId).HasColumnName("PlayerID");
             entity.Property(e => e.TeamId).HasColumnName("TeamID");
 
+            /*
             entity.HasOne(d => d.Player).WithMany(p => p.PlayerTeams)
                 .HasForeignKey(d => d.PlayerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -128,6 +131,7 @@ public partial class GobTrackerContext : DbContext
                 .HasForeignKey(d => d.TeamId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PlayerTeam_Team");
+            */
         });
 
         modelBuilder.Entity<Schedule>(entity =>
@@ -189,6 +193,7 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.StatTypeId).HasColumnName("StatTypeID");
             entity.Property(e => e.StatValue).HasColumnType("decimal(8, 4)");
 
+            /*
             entity.HasOne(d => d.Game).WithMany(p => p.Stats)
                 .HasForeignKey(d => d.GameId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -203,6 +208,7 @@ public partial class GobTrackerContext : DbContext
                 .HasForeignKey(d => d.StatTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Stat_Stat Type");
+            */
         });
 
         modelBuilder.Entity<StatType>(entity =>

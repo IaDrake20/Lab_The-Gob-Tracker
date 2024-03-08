@@ -12,7 +12,8 @@
                         <!-- This acts as the border -->
                         <Grid BackgroundColor="DimGray" Padding="10">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -22,6 +23,7 @@
                             <Label Grid.Column="0" Text="{Binding HomeTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
                             <Label Grid.Column="1" Text="vs" FontSize="50" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                             <Label Grid.Column="2" Text="{Binding AwayTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="1" Grid.Row="4" Text="DateTime" FontAttributes="None" HorizontalTextAlignment="End" FontSize="50" VerticalTextAlignment="Center"/>
                         </Grid>
                     </ContentView>
                 </ViewCell>

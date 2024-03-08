@@ -44,7 +44,8 @@ namespace API_Gob_Tracker.Controllers
                 }
 
                 //LINQ
-                var resultScoringStats = ss.Where(x => x.Id == id).ToList();
+                //IAN: for now I just made it hometeamID
+                var resultScoringStats = ss.Where(x => x.HomeTeamId == id).ToList();
 
                 return resultScoringStats;
             }

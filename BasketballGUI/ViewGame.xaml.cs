@@ -69,7 +69,7 @@ public partial class ViewGame : ContentPage
 
         SelectedGame = e.SelectedItem as Schedule;
 
-        await Navigation.PushAsync(new LiveGame(SelectedGame.Id));
+        await Navigation.PushAsync(new LiveGame(SelectedGame.Id));//.Id
     }
 
      
