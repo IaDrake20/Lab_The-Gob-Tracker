@@ -2,11 +2,74 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BasketballGUI.LiveGame"
-             Title="LiveGame">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
-</ContentPage>
+             Title="Live Game">
+        <!--Beginning of the Grid-->
+
+        <Grid ColumnSpacing="10" RowSpacing="10">
+            <Grid.RowDefinitions>
+
+                <!--Each creates a row with auto sizing or a height if specified-->
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height=" 60"/>
+            </Grid.RowDefinitions>
+
+            <!--Each created a column with auto sizing or a width if specified-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!--Each container needs the column or row specified 
+        (not specified is defaulted to 0)-->
+            <Label Grid.ColumnSpan="3"
+                Text="Away Team"               
+               FontSize="50"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+            <!-- In case you want to color a box
+        <BoxView Grid.Column="1"
+                 Color="LightSkyBlue" />-->
+
+            <Label Grid.Column="4"
+               x:Name="lblHomeTeam"
+               Grid.ColumnSpan="3"
+               Text="Home Team"
+               FontSize="50"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+            <Label Grid.Row="1"
+               x:Name="lblAwayScore"
+               Grid.Column="1"
+               FontSize="70"
+               Text="0"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+
+            <Label Grid.Row="0"
+               x:Name="lblPeriod"
+                Grid.Column="3"
+                FontSize="50"
+                Text="Q1"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" />
+
+            <Label Grid.Row="1"
+               x:Name="lblHomeScore"
+               Grid.Column="5"
+               FontSize="70"
+               Text="0"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />            
+        </Grid>
+    </ContentPage>
