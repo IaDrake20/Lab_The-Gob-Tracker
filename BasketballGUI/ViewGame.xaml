@@ -23,7 +23,7 @@
                             <Label Grid.Column="0" Text="{Binding HomeTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
                             <Label Grid.Column="1" Text="vs" FontSize="50" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                             <Label Grid.Column="2" Text="{Binding AwayTeam}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="50" VerticalTextAlignment="Center"/>
-                            <Label Grid.Column="1" Grid.Row="4" Text="{Binding DateTimeId}" FontAttributes="None" HorizontalTextAlignment="End" FontSize="50" VerticalTextAlignment="Center"/>
+                            <!--<Label Grid.Column="1" Grid.Row="4" Text="{Binding DateTimeId}" FontAttributes="None" HorizontalTextAlignment="End" FontSize="50" VerticalTextAlignment="Center"/>-->
                         </Grid>
                     </ContentView>
                 </ViewCell>
