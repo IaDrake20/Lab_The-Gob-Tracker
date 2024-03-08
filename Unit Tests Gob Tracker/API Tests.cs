@@ -33,7 +33,7 @@ namespace Unit_Tests_Gob_Tracker
             
 
             Assert.Equal("Ian", player.Fname);
-            Assert.Equal("4", player.Lname);
+            Assert.Equal("Drake", player.Lname);
         }
 
         [Fact]
