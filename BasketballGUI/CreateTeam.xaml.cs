@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
-using static Java.Util.Jar.Attributes;
+//using static Java.Util.Jar.Attributes;
 namespace BasketballGUI;
 
 public partial class CreateTeam : ContentPage
