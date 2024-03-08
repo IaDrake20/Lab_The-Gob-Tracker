@@ -30,6 +30,7 @@ public partial class CreateTeam : ContentPage
                 if (response.IsSuccessStatusCode)
                 {
                     Debug.WriteLine("Team successfully added.");
+                    entry.Text = string.Empty;
                 }
                 else
                 {

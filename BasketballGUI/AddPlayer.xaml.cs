@@ -1,102 +1,97 @@
-//using Android.Media;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
 
-
-namespace BasketballGUI;
-
-public partial class AddPlayer : ContentPage
+namespace BasketballGUI
 {
-    private int teamId;
-	public AddPlayer(int teamID)
-	{
-        teamId = teamID;
-		InitializeComponent();
-	}
-
-    private async void btnAddPlayer_Clicked(object sender, EventArgs e)
+    public partial class AddPlayer : ContentPage
     {
-        var firstName = firstNameEntry.Text; // Capture first name
-        var lastName = lastNameEntry.Text; // Capture last name
-        if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
+        private int teamId;
+
+        public AddPlayer(int teamID)
         {
-            // Notify the user to enter both names
-            await DisplayAlert("Validation", "Please enter both first and last names.", "OK");
-            return;
+            teamId = teamID;
+            InitializeComponent();
         }
-        // Assuming your API requires a full name, you can concatenate them or adjust as needed
-        var fullName = $"{firstName} {lastName}";
-        int playerID=await MakePlayer(firstName, lastName);
-        await AddPlayerToTeam(teamId, playerID);
 
-        // Clear the entry after adding
-        firstNameEntry.Text = string.Empty;
-        lastNameEntry.Text = string.Empty;
-    }
-
-    private async Task<int> MakePlayer(string f, string l)
-    {
-        // Implementation depends on how you're storing and managing data
-        // For example, sending a POST request to a REST API
-
-        var newPlayer = new { FName=f, LName=l};
-        string apiUrl = "https://localhost:7067/api/Players"; // Adjust URL as necessary
-        int playerId = -1;
-        using (var client = new HttpClient())
+        private async void btnAddPlayer_Clicked(object sender, EventArgs e)
         {
-            var json = JsonConvert.SerializeObject(newPlayer);
-            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+            var firstName = firstNameEntry.Text;
+            var lastName = lastNameEntry.Text;
 
-            var response = await client.PostAsync(apiUrl, content);
-            if (response.IsSuccessStatusCode)
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-                playerId = JsonConvert.DeserializeObject<int>(responseContent);
-                // Optionally, notify the user that the player was added successfully
-                Debug.WriteLine("Player added successfully");
+                await DisplayAlert("Validation", "Please enter both first and last names.", "OK");
+                return;
+            }
+
+            int playerId = await MakePlayer(firstName, lastName);
+            if (playerId != -1)
+            {
+                bool success = await AddPlayerToTeam(teamId, playerId);
+
+                if (success)
+                {
+                    Debug.WriteLine("Player added to team successfully");
+                    await DisplayAlert("Success", "Player added to team successfully", "OK");
+                }
+                else
+                {
+                    Debug.WriteLine("Failed to add player to team.");
+                    await DisplayAlert("Error", "Failed to add player to team.", "OK");
+                }
             }
             else
             {
-                // Handle failure
-                Debug.WriteLine($"Failed to add player. Status code: {response.StatusCode}");
+                await DisplayAlert("Error", "Failed to create player.", "OK");
+            }
+
+            // Clear the entry after adding
+            firstNameEntry.Text = string.Empty;
+            lastNameEntry.Text = string.Empty;
+        }
+
+        private async Task<int> MakePlayer(string firstName, string lastName)
+        {
+            string apiUrl = "https://localhost:7067/api/Players";
+            var newPlayer = new { FName = firstName, LName = lastName };
+            using (var client = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(newPlayer);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(apiUrl, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    // Assuming the API returns the player's ID as an integer
+                    int playerId = JsonConvert.DeserializeObject<int>(responseContent);
+                    return playerId;
+                }
+            }
+            return -1; // Indicate failure
+        }
+
+        private async Task<bool> AddPlayerToTeam(int teamId, int playerId)
+        {
+            string apiUrl = "https://localhost:7067/api/PlayerTeams";
+            var newPlayerTeam = new { TeamId = teamId, PlayerId = playerId };
+            using (var client = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(newPlayerTeam);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(apiUrl, content);
+                return response.IsSuccessStatusCode;
             }
         }
-        return playerId;
-    }
-    private async Task AddPlayerToTeam(int t, int p)
-    {
-        var newPlayerTeam = new { TeamId = t, PlayerID = p };
-        string apiUrl = "https://localhost:7067/api/PlayerTeams";
-        using (var client = new HttpClient())
+        private async void btnFinish_Clicked(object sender, EventArgs e)
         {
-            var json = JsonConvert.SerializeObject(newPlayerTeam);
-            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+            // Navigate back to the previous page
+            await Navigation.PopAsync();
         }
-
-        }
-    private void btnPressed(object sender, EventArgs e)
-    {
-        var button = sender as Button;
-        if (button != null)
-        {
-            originalColor = button.BackgroundColor;
-            button.BackgroundColor = clickColor;
-        }
-    }
-
-    private void btnReleased(object sender, EventArgs e)
-    {
-        var button = sender as Button;
-        if (button != null)
-        {
-            button.BackgroundColor = originalColor;
-        }
-    }
-    public Color originalColor = Colors.Red;
-    public Color clickColor = Colors.White;
-
-    private async void btnFinish_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PopAsync();
     }
 }
