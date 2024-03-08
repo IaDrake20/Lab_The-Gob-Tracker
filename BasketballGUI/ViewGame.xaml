@@ -2,12 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BasketballGUI.ViewGame"
-             Title="ViewGame">
-    <VerticalStackLayout>
-        <Label 
-            x:Name  ="testText"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Todays Games:">
+    <ListView ItemsSource="{Binding MasterList}" >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <HorizontalStackLayout Padding="10">
+                        <Label Text="{Binding HomeTeam}" FontAttributes="Bold" />
+                        <Label Text=" vs " />
+                        <Label Text="{Binding AwayTeam}" FontAttributes="Bold" VerticalOptions="End" />
+                    </HorizontalStackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
