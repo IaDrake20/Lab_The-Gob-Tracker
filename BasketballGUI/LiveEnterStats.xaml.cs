@@ -1,5 +1,4 @@
-﻿using API_Gob_Tracker.Models;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
