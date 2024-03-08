@@ -148,10 +148,12 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.StatTypeId).HasColumnName("StatTypeID");
             entity.Property(e => e.StatValue).HasColumnType("decimal(8, 4)");
 
+            /*
             entity.HasOne(d => d.Game).WithMany(p => p.Stats)
                 .HasForeignKey(d => d.GameId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Stat_Game");
+            */
 
             entity.HasOne(d => d.PlayerTeam).WithMany(p => p.Stats)
                 .HasForeignKey(d => d.PlayerTeamId)
