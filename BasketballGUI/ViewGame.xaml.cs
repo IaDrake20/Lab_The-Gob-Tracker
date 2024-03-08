@@ -32,12 +32,13 @@ public partial class ViewGame : ContentPage
                 if (response.IsSuccessStatusCode)
                 {
                     string jsonString = await response.Content.ReadAsStringAsync();
-                    var games = JsonConvert.DeserializeObject<List<Schedule>>(jsonString);
+                    
+                    List<Schedule> games = JsonConvert.DeserializeObject<List<Schedule>>(jsonString);
 
-                    MasterList.Clear();
-                    foreach (var game in games)
+                    foreach (Schedule game in games)
                     {
-                        if(game.DateTimeId.Date == DateTimeOffset.Now.Date)
+                        
+                        if (game.DateTimeId.Date == DateTimeOffset.Now.Date)
                         {
                             MasterList.Add(game);
                         }
@@ -68,7 +69,7 @@ public partial class ViewGame : ContentPage
 
         SelectedGame = e.SelectedItem as Schedule;
 
-        await Navigation.PushAsync(new LiveGame());
+        await Navigation.PushAsync(new LiveGame(SelectedGame.Id));
     }
 
      

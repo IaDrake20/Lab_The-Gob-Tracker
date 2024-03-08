@@ -30,8 +30,10 @@
 
             <!--Each container needs the column or row specified 
         (not specified is defaulted to 0)-->
-            <Label Grid.ColumnSpan="3"
-                Text="Away Team"               
+            <Label 
+               Grid.ColumnSpan="3"
+               x:Name="ATeam"
+               Text=""               
                FontSize="50"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
@@ -41,9 +43,9 @@
                  Color="LightSkyBlue" />-->
 
             <Label Grid.Column="4"
-               x:Name="lblHomeTeam"
+               x:Name="HTeam"
                Grid.ColumnSpan="3"
-               Text="Home Team"
+               Text=""
                FontSize="50"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
