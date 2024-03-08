@@ -273,8 +273,8 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.PlayerId).HasColumnName("PlayerID");
-            entity.Property(e => e.TeamId).HasColumnName("TeamID");
+            entity.Property(e => e.PlayerID).HasColumnName("PlayerID");
+            entity.Property(e => e.TeamID).HasColumnName("TeamID");
         });
 
         OnModelCreatingPartial(modelBuilder);

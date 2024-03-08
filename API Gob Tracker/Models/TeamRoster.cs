@@ -11,9 +11,9 @@ public partial class TeamRoster
 
     public string Name { get; set; } = null!;
 
-    public int TeamId { get; set; }
+    public int TeamID { get; set; }
 
-    public int PlayerId { get; set; }
+    public int PlayerID { get; set; }
 
     public int Id { get; set; }
 }
