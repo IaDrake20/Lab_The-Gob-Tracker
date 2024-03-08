@@ -40,7 +40,7 @@ namespace API_Gob_Tracker.Controllers
             }
 
             //LINQ
-            var resultTrs = allRosters.Where(x => x.Id == id).ToList();
+            var resultTrs = allRosters.Where(x => x.TeamId == id).ToList();
 
             return resultTrs;
         }
