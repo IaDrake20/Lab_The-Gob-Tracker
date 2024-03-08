@@ -1,4 +1,4 @@
-namespace UnitTesting
+namespace Unit_Tests_Gob_Tracker
 {
     public class UnitTest1
     {
