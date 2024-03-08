@@ -78,6 +78,7 @@ public partial class GobTrackerContext : DbContext
             entity.Property(e => e.Team1Id).HasColumnName("Team1ID");
             entity.Property(e => e.Team2Id).HasColumnName("Team2ID");
 
+            /*
             entity.HasOne(d => d.Team1).WithMany(p => p.GameTeam1s)
                 .HasForeignKey(d => d.Team1Id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -87,6 +88,7 @@ public partial class GobTrackerContext : DbContext
                 .HasForeignKey(d => d.Team2Id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Team2ID");
+            */
         });
 
         modelBuilder.Entity<Player>(entity =>
@@ -117,12 +119,13 @@ public partial class GobTrackerContext : DbContext
                 .HasForeignKey(d => d.PlayerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PlayerTeam_Player");
-            */
+            
 
             entity.HasOne(d => d.Team).WithMany(p => p.PlayerTeams)
                 .HasForeignKey(d => d.TeamId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PlayerTeam_Team");
+            */
         });
 
         modelBuilder.Entity<Schedule>(entity =>
@@ -157,10 +160,12 @@ public partial class GobTrackerContext : DbContext
                 .HasConstraintName("FK_Stat_Game");
             */
 
+            /*
             entity.HasOne(d => d.PlayerTeam).WithMany(p => p.Stats)
                 .HasForeignKey(d => d.PlayerTeamId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Stat_PlayerTeam");
+            */
 
             entity.HasOne(d => d.StatType).WithMany(p => p.Stats)
                 .HasForeignKey(d => d.StatTypeId)
